@@ -1,13 +1,18 @@
 import axios, { AxiosInstance } from 'axios';
+import AuthApi from './auth.api';
 import { config } from './config';
+import FacilitiesApi from './facilities.api';
 
 class Api {
     private readonly client: AxiosInstance;
+    public readonly facilities: FacilitiesApi;
+    public readonly auth: AuthApi;
 
     constructor() {
         this.client = axios.create(config);
-
         this.client.interceptors.response.use((res) => res.data);
+        this.facilities = new FacilitiesApi(this);
+        this.auth = new AuthApi(this);
         this.client.interceptors.request.use((config) => ({
             ...config,
             headers: { Authorization: 'token' },

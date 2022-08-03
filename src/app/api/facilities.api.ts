@@ -1,31 +1,36 @@
-import { Facility } from '../types/Facility';
+import { CreateFacilityDto } from '../types/Facility/CreateFacilityDto';
+import { FacilityInfoDto } from '../types/Facility/FacilityInfoDto';
+import { FacilityMapDto } from '../types/Facility/FacilityMapDto';
+import { PaginatedFacilityDto } from '../types/Facility/PaginatedFacilityDto';
+import { UpdateFacilityDto } from '../types/Facility/UpdateFacilityDto';
 import { facilities } from './endpoints';
 import Api from './index';
 
 export default class FacilitiesApi {
     constructor(private readonly api: Api) {}
 
-    public create(item: Facility): Promise<Facility> {
-        return this.api.post(facilities.create(), item);
+    public create(facility: CreateFacilityDto): Promise<FacilityInfoDto> {
+        return this.api.post(facilities.create(), facility);
     }
-
-    // public getAll(authInform: Auth): Promise<Facilities[]> {
-    //     return this.api.get(facilities.getAll(), authInform);
-    // }
-
-    // public getAllPag(authInform: Auth): Promise<string> {
-    //     return this.api.get(facilities.getAllPag(), authInform);
-    // }
-    // public getAllMap(authInform: Auth): Promise<string> {
-    //     return this.api.het(facilities.getAllMap(), authInform);
-    // }
-    public getById(id: string): Promise<Facility> {
+    public getAll(/*?*/): Promise<FacilityInfoDto[]> {
+        return this.api.get(facilities.getAll());
+    }
+    public getAllPag(/*?*/): Promise<PaginatedFacilityDto> {
+        return this.api.get(facilities.getAllPag());
+    }
+    public getAllMap(/*?*/): Promise<FacilityMapDto> {
+        return this.api.get(facilities.getAllMap());
+    }
+    public getById(id: string): Promise<FacilityInfoDto> {
         return this.api.get(facilities.getById(id));
     }
-    public update(id: string, item: Facility): Promise<Facility> {
-        return this.api.patch(facilities.update(id), item);
+    public update(
+        id: string,
+        facility: UpdateFacilityDto
+    ): Promise<FacilityInfoDto> {
+        return this.api.patch(facilities.update(id), facility);
     }
-    public delete(id: string): Promise<string> {
+    public delete(id: string): Promise<boolean> {
         return this.api.delete(facilities.delete(id));
     }
 }
