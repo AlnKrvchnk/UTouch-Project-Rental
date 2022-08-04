@@ -1,8 +1,12 @@
+import { GetAllFacilityDto } from '../types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '../types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '../types/Facility/GetAllPagFacilityDto';
+
 export const facilities = {
     create: () => '/facilities',
-    getAll: () => '/facilities',
-    getAllPag: () => '/v2/facilities',
-    getAllMap: () => '/facilities/map',
+    getAll: (facilityFilter: GetAllFacilityDto) => '/facilities',
+    getAllPag: (facilityFilter: GetAllPagFacilityDto) => '/v2/facilities',
+    getAllMap: (facilityFilter: GetAllMapFacilityDto) => '/facilities/map',
 
     getById: (id: string) => `/facilities/${id}`,
     update: (id: string) => `/facilities/${id}`,
