@@ -1,13 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import AppStore from './app/store';
+import StoreContext from './contexts/StoreContext';
+import './index.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+const store = new AppStore();
 root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+    <StoreContext.Provider value={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </StoreContext.Provider>
 );
