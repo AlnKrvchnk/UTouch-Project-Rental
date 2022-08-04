@@ -1,3 +1,3 @@
 export interface GetCodeDto {
-    зрщту: string;
+    phone: string;
 }

@@ -7,18 +7,16 @@ import { FacilityPaymentOption } from './FacilityPaymentOption';
 import { FacilityRegistration } from './FacilityRegistration';
 import { FacilityRoomCount } from './FacilityRoomCount';
 import { FacilityType } from './FaculityType';
-import { FileInfoDto } from './FileInfoDto';
 
 export interface Facility {
-    id?: string;
-    isFavorite?: boolean;
-    developerName?: string;
-    developerAvatar?: string;
-    documents?: [FileInfoDto];
-    ownerName?: string;
-    ownerAvatar?: string;
-    isDelivered?: boolean;
-    // FacilityInfo
+    ownerId?: number;
+    distanceToTheBeach?: number;
+    developerId?: number;
+    roomsCount?: number;
+    cottageCount?: number;
+    floor?: number;
+    checkerboardId?: number;
+    deliveryDate?: string;
 
     facilityType: FacilityType;
     isIllegal: boolean;
@@ -43,27 +41,19 @@ export interface Facility {
     parking: string;
     territory: string;
     ceilingHeight: number;
-    photoNames: [string];
-    registrations: [FacilityRegistration];
+    photoNames: string[];
+    registrations: FacilityRegistration[];
     flatDecoration: FacilityFlatDecoration;
     houseClass: FacilityHouseClass;
-    benefits: [FacilityBenefit];
-    communications: [FacilityCommunication];
-    paymentOptions: [FacilityPaymentOption];
-    installmentPlanOptions: [string];
-    sales: [string];
-    commissions: [string];
-    documentNames: [string];
-    apartmentLayouts: [string];
-    news: [FacilityNewsDto];
+    benefits: FacilityBenefit[];
+    communications: FacilityCommunication[];
+    paymentOptions: FacilityPaymentOption[];
+    installmentPlanOptions: string[];
+    sales: string[];
+    commissions: string[];
+    documentNames: string[];
+    apartmentLayouts: string[];
+    news: FacilityNewsDto[];
     isEnabled: boolean;
-    distanceToTheBeach: number;
-    developerId: number;
-    roomsCount: number;
-    cottageCount: number;
-    floor: number;
-    ownerId: number;
-    checkerboardId: number;
     roomCount: FacilityRoomCount;
-    deliveryDate: string;
 }

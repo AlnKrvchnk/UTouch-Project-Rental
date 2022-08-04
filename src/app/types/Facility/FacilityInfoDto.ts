@@ -6,7 +6,7 @@ export interface FacilityInfoDto extends Facility {
     isFavorite: boolean;
     developerName: string;
     developerAvatar: string;
-    documents: [FileInfoDto];
+    documents: FileInfoDto[];
     ownerName: string;
     ownerAvatar: string;
     isDelivered: boolean;
