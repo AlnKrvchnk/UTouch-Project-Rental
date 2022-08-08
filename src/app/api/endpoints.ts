@@ -1,6 +1,6 @@
-import { GetAllFacilityDto } from '../types/Facility/GetAllFacilityDto';
-import { GetAllMapFacilityDto } from '../types/Facility/GetAllMapFacilityDto';
-import { GetAllPagFacilityDto } from '../types/Facility/GetAllPagFacilityDto';
+import { GetAllFacilityDto } from '@Types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '@Types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '@Types/Facility/GetAllPagFacilityDto';
 
 export const facilities = {
     create: () => '/facilities',

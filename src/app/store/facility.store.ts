@@ -1,13 +1,12 @@
+import { FacilityInfoDto } from '@Types/Facility/FacilityInfoDto';
+import { FacilityMapDto } from '@Types/Facility/FacilityMapDto';
+import { GetAllFacilityDto } from '@Types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '@Types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '@Types/Facility/GetAllPagFacilityDto';
+import { UpdateFacilityDto } from '@Types/Facility/UpdateFacilityDto';
 import { action, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 import { api } from '../api';
-import { CreateFacilityDto } from '../types/Facility/CreateFacilityDto';
-import { FacilityInfoDto } from '../types/Facility/FacilityInfoDto';
-import { FacilityMapDto } from '../types/Facility/FacilityMapDto';
-import { GetAllFacilityDto } from '../types/Facility/GetAllFacilityDto';
-import { GetAllMapFacilityDto } from '../types/Facility/GetAllMapFacilityDto';
-import { GetAllPagFacilityDto } from '../types/Facility/GetAllPagFacilityDto';
-import { UpdateFacilityDto } from '../types/Facility/UpdateFacilityDto';
 
 class TodoStore {
     @observable page: number | undefined = undefined;
@@ -20,17 +19,7 @@ class TodoStore {
     constructor() {
         makeAutoObservable(this);
     }
-    @action
-    public async create(facility: CreateFacilityDto) {
-        this.isLoad = false;
-        try {
-            const requestRes = await api.facilities.create(facility);
-            this.data = [requestRes, ...this.data];
-            this.isLoad = true;
-        } catch (err) {
-            console.log(err);
-        }
-    }
+
     @action
     public async update(id: string, facility: UpdateFacilityDto) {
         this.isLoad = false;

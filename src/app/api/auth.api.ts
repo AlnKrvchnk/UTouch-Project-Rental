@@ -1,7 +1,7 @@
-import { AuthTokenDto } from '../types/Auth/AuthTokenDto';
-import { GetCodeDto } from '../types/Auth/GetCodeDto';
-import { LoginDto } from '../types/Auth/LoginDto';
-import { WhoamiDto } from '../types/Auth/WhomiDto';
+import { AuthTokenDto } from '@Types/Auth/AuthTokenDto';
+import { GetCodeDto } from '@Types/Auth/GetCodeDto';
+import { LoginDto } from '@Types/Auth/LoginDto';
+import { WhoamiDto } from '@Types/Auth/WhomiDto';
 import { auth } from './endpoints';
 import Api from './index';
 

@@ -20,16 +20,6 @@
         "new-cap": "error",
         "no-extra-semi": "error",
         "switch-colon-spacing": "error",
-        "space-before-blocks": "error",
-        "@typescript-eslint/no-empty-interface": 0,
-        "no-unused-vars": 0,
-        "@typescript-eslint/no-unused-vars": 0,
-        "@typescript-eslint/no-explicit-any": 0,
-        "import/no-anonymous-default-export": "off"
-    },
-    "overrides": [
-        {
-            "files": ["**/*.stories.*"]
-        }
-    ]
+        "space-before-blocks": "error"
+    }
 }

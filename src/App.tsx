@@ -1,7 +1,17 @@
-import './App.css';
+import Timer from '@Components/atoms/Timer/Timer';
+import { useState } from 'react';
 
 function App() {
-    return <div>App</div>;
+    const [timerWork, setWork] = useState<boolean>(true);
+    return (
+        <Timer
+            isWork={timerWork}
+            timeInterval={100}
+            timeOver={() => {
+                setWork(false);
+            }}
+        ></Timer>
+    );
 }
 
 export default App;

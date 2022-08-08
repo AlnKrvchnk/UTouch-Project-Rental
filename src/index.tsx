@@ -1,18 +1,21 @@
+import StoreContext from '@Context/StoreContext';
+import { ThemeProvider } from '@mui/material/styles';
+import AppStore from '@Store/index';
+import Theme from '@Styles/Theme';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import AppStore from './app/store';
-import StoreContext from './contexts/StoreContext';
-import './index.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 const store = new AppStore();
 root.render(
-    <StoreContext.Provider value={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </StoreContext.Provider>
+    <ThemeProvider theme={Theme}>
+        <StoreContext.Provider value={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </StoreContext.Provider>
+    </ThemeProvider>
 );
