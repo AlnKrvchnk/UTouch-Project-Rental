@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-const StyledEnterCode = styled.div`
-    display: flex;
-    width: min-content;
-    text-align: center;
-    margin-top: 8px;
+const StyledEnterPhone = styled.div`
     & > *:not(:first-child) {
         margin-left: 8px;
         width: min-width;
@@ -22,4 +18,4 @@ const StyledEnterCode = styled.div`
     }
 `;
 
-export default StyledEnterCode;
+export default StyledEnterPhone;

@@ -1,4 +1,8 @@
-import { Props, StyledTextField } from './StyledTextField';
+import { Props as TextFieldProps, StyledTextField } from './StyledTextField';
+
+interface Props extends TextFieldProps {
+    dataIndex?: number;
+}
 
 const TextField = ({
     id,
@@ -12,8 +16,15 @@ const TextField = ({
     radius = 8,
     helperText,
     onChange,
+    onClick,
     InputProps,
     type,
+    ref,
+    autoFocus,
+    inputRef,
+    onKeyDown,
+    value,
+    disabled,
 }: Props) => {
     return (
         <StyledTextField
@@ -30,6 +41,13 @@ const TextField = ({
             helperText={helperText}
             InputProps={InputProps}
             type={type}
+            onClick={onClick}
+            ref={ref}
+            autoFocus={autoFocus}
+            inputRef={inputRef}
+            onKeyDown={onKeyDown}
+            value={value}
+            disabled={disabled}
         ></StyledTextField>
     );
 };

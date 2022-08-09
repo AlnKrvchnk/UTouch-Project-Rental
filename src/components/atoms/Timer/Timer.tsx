@@ -41,7 +41,7 @@ const Timer = ({ isWork, timeInterval, timeOver }: Props) => {
         setTicking(isWork);
     }, [isWork]);
     return (
-        <Typography variant="h5" sx={{color:"#9FA4AC"}}>
+        <Typography variant="h5" color={'text.disable'}>
             {minutes}:{seconds}
         </Typography>
     );

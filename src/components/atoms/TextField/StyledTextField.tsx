@@ -7,6 +7,7 @@ export interface Props extends OutlinedTextFieldProps {
 }
 
 export const StyledTextField = styled(TextField)<Props>`
+    min-width: 56px;
     fieldset {
         ${(props) => props.dashed && `border-style: dashed;`}
         border-radius:${(props) => props.radius}px;
@@ -15,6 +16,7 @@ export const StyledTextField = styled(TextField)<Props>`
         padding: 16px 12px;
         font-size: 16px;
         font-weight: 400;
+        text-align: inherit;
         &::placeholder {
             font-size: 16px;
             font-weight: 400;

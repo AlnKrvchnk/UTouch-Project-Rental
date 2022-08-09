@@ -15,7 +15,7 @@ class Api {
         this.auth = new AuthApi(this);
         this.client.interceptors.request.use((config) => ({
             ...config,
-            headers: { Authorization: localStorage.geItem('token') },
+            headers: { Authorization: localStorage.getItem('token') },
         }));
     }
 

@@ -1,17 +1,7 @@
-import Timer from '@Components/atoms/Timer/Timer';
-import { useState } from 'react';
+import AuthFormContainer from './components/containers/AuthFormContainer/AuthFormContainer';
 
 function App() {
-    const [timerWork, setWork] = useState<boolean>(true);
-    return (
-        <Timer
-            isWork={timerWork}
-            timeInterval={100}
-            timeOver={() => {
-                setWork(false);
-            }}
-        ></Timer>
-    );
+    return <AuthFormContainer />;
 }
 
 export default App;

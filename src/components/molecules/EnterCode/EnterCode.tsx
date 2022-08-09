@@ -1,16 +1,42 @@
 import TextField from '@Components/atoms/TextField/TextField';
 import Typography from '@mui/material/Typography';
+import { ChangeEvent, KeyboardEvent } from 'react';
 import StyledEnterBlock from './StyledEnterCode';
 
-const EnterCode = () => {
+interface Props {
+    handleKeyDown: (
+        i: number,
+        e: KeyboardEvent<HTMLInputElement | HTMLDivElement>
+    ) => void;
+    handleChange: (
+        i: number,
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => void;
+    refs: HTMLInputElement[];
+    values: string[];
+}
+
+const EnterCode = ({ handleKeyDown, handleChange, refs, values }: Props) => {
     return (
         <div>
-            <Typography variant="body1">Введите код подтверждения</Typography>
+            <Typography variant="h6" color={'text.primary'}>
+                Введите код подтверждения
+            </Typography>
             <StyledEnterBlock>
-                <TextField variant="outlined" placeholder={'0'} />
-                <TextField variant="outlined" placeholder={'0'} />
-                <TextField variant="outlined" placeholder={'0'} />
-                <TextField variant="outlined" placeholder={'0'} />
+                {values.map((n, i) => (
+                    <TextField
+                        placeholder={'0'}
+                        variant={'outlined'}
+                        type={'number'}
+                        inputProps={{
+                            inputMode: 'numeric',
+                        }}
+                        value={values[i]}
+                        inputRef={(ref) => (refs[i] = ref)}
+                        onChange={(e) => handleChange(i, e)}
+                        onKeyDown={(e) => handleKeyDown(i, e)}
+                    />
+                ))}
             </StyledEnterBlock>
         </div>
     );

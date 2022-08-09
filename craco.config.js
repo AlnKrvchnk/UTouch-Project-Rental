@@ -15,15 +15,18 @@ module.exports = {
     },
     jest: {
         configure: {
+            globals: {
+                CONFIG: true,
+            },
             moduleNameMapper: {
-                '^@Components(.*)$': '<rootDir>/src/components$1',
-                '^@(.*)$': '<rootDir>/src/$1',
-                '^@Api(.*)$': '<rootDir>/app/api$1',
-                '^@Store(.*)$': '<rootDir>/src/app/store$1',
-                '^@Types(.*)$': '<rootDir>/src/app/types$1',
-                '^@Pages(.*)$': '<rootDir>/src/components/pages$1',
-                '^@Context(.*)$': '<rootDir>/src/contexts$1',
-                '^@Styles(.*)$': '<rootDir>/src/styles$1',
+                '^@Components/(.*)$': '<rootDir>/src/components$1',
+                '^@/(.*)$': '<rootDir>/src/$1',
+                '^@Api/(.*)$': '<rootDir>/app/api$1',
+                '^@Store/(.*)$': '<rootDir>/src/app/store$1',
+                '^@Types/(.*)$': '<rootDir>/src/app/types$1',
+                '^@Pages/(.*)$': '<rootDir>/src/components/pages$1',
+                '^@Context/(.*)$': '<rootDir>/src/contexts$1',
+                '^@Styles/(.*)$': '<rootDir>/src/styles$1',
             },
         },
     },
