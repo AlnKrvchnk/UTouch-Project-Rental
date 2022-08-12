@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledAuthForm = styled.form`
-    position: absolute;
-    width: 442px;
     display: flex;
     flex-direction: column;
     padding: 32px;

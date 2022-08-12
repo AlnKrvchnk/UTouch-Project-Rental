@@ -1,10 +1,10 @@
-import { FacilityInfoDto } from '@Types/Facility/FacilityInfoDto';
-import { FacilityMapDto } from '@Types/Facility/FacilityMapDto';
-import { GetAllFacilityDto } from '@Types/Facility/GetAllFacilityDto';
-import { GetAllMapFacilityDto } from '@Types/Facility/GetAllMapFacilityDto';
-import { GetAllPagFacilityDto } from '@Types/Facility/GetAllPagFacilityDto';
-import { UpdateFacilityDto } from '@Types/Facility/UpdateFacilityDto';
-import { RequestPaginationDto } from '@Types/Pagination/RequestPaginationDto';
+import { FacilityInfoDto } from '@types/Facility/FacilityInfoDto';
+import { FacilityMapDto } from '@types/Facility/FacilityMapDto';
+import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
+import { UpdateFacilityDto } from '@types/Facility/UpdateFacilityDto';
+import { RequestPaginationDto } from '@types/Pagination/RequestPaginationDto';
 import { facilities } from './endpoints';
 import Api from './index';
 

@@ -9,7 +9,8 @@
         "no-var": "error",
         "arrow-spacing": "error",
         "comma-spacing": ["error", { "before": false, "after": true }],
-        "indent": ["error", 4],
+
+        "indent": "off",
         "max-len": ["error", { "code": 110 }],
         "no-mixed-spaces-and-tabs": "error",
         "no-multi-spaces": "error",
@@ -19,7 +20,6 @@
         ],
         "new-cap": "error",
         "no-extra-semi": "error",
-        "switch-colon-spacing": "error",
-        "space-before-blocks": "error"
+        "switch-colon-spacing": "error"
     }
 }

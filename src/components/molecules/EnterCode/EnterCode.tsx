@@ -1,4 +1,4 @@
-import TextField from '@Components/atoms/TextField/TextField';
+import TextField from '@components/atoms/TextField/TextField';
 import Typography from '@mui/material/Typography';
 import { ChangeEvent, KeyboardEvent } from 'react';
 import StyledEnterBlock from './StyledEnterCode';
@@ -25,6 +25,7 @@ const EnterCode = ({ handleKeyDown, handleChange, refs, values }: Props) => {
             <StyledEnterBlock>
                 {values.map((n, i) => (
                     <TextField
+                        key={i}
                         placeholder={'0'}
                         variant={'outlined'}
                         type={'number'}

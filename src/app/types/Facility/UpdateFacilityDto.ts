@@ -1,7 +1,59 @@
-import { Facility } from './Facility';
+import { FacilityBenefit } from './FacilityBenefit';
+import { FacilityCommunication } from './FacilityCommunication';
+import { FacilityFlatDecoration } from './FacilityFlatDecoration';
+import { FacilityHouseClass } from './FacilityHouseClass';
+import { FacilityNewsDto } from './FacilityNewsDto';
+import { FacilityPaymentOption } from './FacilityPaymentOption';
+import { FacilityRegistration } from './FacilityRegistration';
+import { FacilityRoomCount } from './FacilityRoomCount';
+import { FacilityType } from './FaculityType';
 
-export interface UpdateFacilityDto extends Facility {
+export interface UpdateFacilityDto {
+    roomsCount?: number;
+    cottageCount?: number;
+    floor?: number;
+    checkerboardId?: number;
+    deliveryDate?: string;
+
     distanceToTheBeach: number;
     developerId: number;
     ownerId: number;
+    facilityType: FacilityType;
+    isIllegal: boolean;
+    name: string;
+    cX: number;
+    cY: number;
+    city: string;
+    address: string;
+    building: string;
+    price: number;
+    square: number;
+    pricePerMeter: number;
+    description: string;
+    district: string;
+    microDistrict: string;
+    flatsCount: number;
+    minPrice: number;
+    maxPrice: number;
+    minSquare: number;
+    maxSquare: number;
+    material: string;
+    parking: string;
+    territory: string;
+    ceilingHeight: number;
+    photoNames: string[];
+    registrations: FacilityRegistration[];
+    flatDecoration: FacilityFlatDecoration;
+    houseClass: FacilityHouseClass;
+    benefits: FacilityBenefit[];
+    communications: FacilityCommunication[];
+    paymentOptions: FacilityPaymentOption[];
+    installmentPlanOptions: string[];
+    sales: string[];
+    commissions: string[];
+    documentNames: string[];
+    apartmentLayouts: string[];
+    news: FacilityNewsDto[];
+    isEnabled: boolean;
+    roomCount: FacilityRoomCount;
 }

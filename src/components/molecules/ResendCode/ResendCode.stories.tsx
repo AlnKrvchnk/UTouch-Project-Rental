@@ -6,7 +6,15 @@ export default {
     component: ResendCode,
 } as ComponentMeta<typeof ResendCode>;
 
-const Template: ComponentStory<typeof ResendCode> = () => <ResendCode />;
+const Template: ComponentStory<typeof ResendCode> = (arg) => (
+    <ResendCode {...arg} />
+);
 
 export const Default = Template.bind({});
-Default.args = {};
+let timerWork = false;
+Default.args = {
+    isWork: timerWork,
+    resendCode: () => {
+        timerWork = !timerWork;
+    },
+};

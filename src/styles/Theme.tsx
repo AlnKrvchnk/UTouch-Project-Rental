@@ -11,7 +11,7 @@ const Theme = createTheme({
             contrastText: '#1F64E5',
         },
         // error: {},
-        // warning: {},
+        warning: { main: '#FAB005' },
         // info: {},
         // success: {},
         text: {
@@ -22,42 +22,42 @@ const Theme = createTheme({
     },
     spacing: 4,
     typography: {
-        caption: {
+        h1: {
             fontWeight: 700,
             fontSize: 32,
             variantMapping: 'h1',
         },
-        h1: {
+        h2: {
             fontWeight: 600,
             fontSize: 24,
             variantMapping: 'h1',
         },
-        h2: {
+        h3: {
             fontWeight: 400,
             fontSize: 24,
             variantMapping: 'h2',
         },
-        h3: {
+        h4: {
             fontWeight: 400,
             fontSize: 18,
             variantMapping: 'h3',
         },
-        h4: {
+        h5: {
             fontWeight: 600,
             fontSize: 16,
             variantMapping: 'h4',
         },
-        h5: {
+        h6: {
             fontWeight: 400,
             fontSize: 16,
             variantMapping: 'h5',
         },
-        h6: {
+        subtitle1: {
             fontWeight: 600,
             fontSize: 14,
             variantMapping: 'h6',
         },
-        subtitle1: {
+        subtitle2: {
             fontWeight: 400,
             fontSize: 14,
             variantMapping: 'h6',

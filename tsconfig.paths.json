@@ -3,13 +3,15 @@
         "baseUrl": "./",
         "paths": {
             "@/*": ["./src/*"],
-            "@Api/*": ["./src/app/api/*"],
-            "@Store/*": ["./src/app/store/*"],
-            "@Types/*": ["./src/app/types/*"],
-            "@Components/*": ["./src/components/*"],
-            "@Pages/*": ["./src/components/pages/*"],
-            "@Context/*": ["./src/contexts/*"],
-            "@Styles/*": ["./src/styles/*"]
+            "@api/*": ["./src/app/api/*"],
+            "@store/*": ["./src/app/store/*"],
+            "@types/*": ["./src/app/types/*"],
+            "@components/*": ["./src/components/*"],
+            "@pages/*": ["./src/components/pages/*"],
+            "@context/*": ["./src/contexts/*"],
+            "@utilites/*": ["./src/utilites/*"],
+            "@styles/*": ["./src/styles/*"],
+            "@routes/*": ["./src/routes/*"]
         }
     }
 }

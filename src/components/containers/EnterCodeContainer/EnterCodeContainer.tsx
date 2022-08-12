@@ -2,10 +2,10 @@ import EnterCode from '@/components/molecules/EnterCode/EnterCode';
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
 interface Props {
-    enterValue: (code: string) => void;
+    valueEntered: (code: string) => void;
 }
 
-const EnterCodeContainer = ({ enterValue }: Props) => {
+const EnterCodeContainer = ({ valueEntered }: Props) => {
     const refs: HTMLInputElement[] = [];
     const [values, setValues] = useState<string[]>(new Array(4).fill(''));
 
@@ -46,6 +46,7 @@ const EnterCodeContainer = ({ enterValue }: Props) => {
         i: number,
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
+        console.log(refs);
         const value: string = e.target.value;
         if (value.length > 0 && i < refs.length) {
             const tmp = [...values];
@@ -55,7 +56,7 @@ const EnterCodeContainer = ({ enterValue }: Props) => {
                 refs[i + 1].disabled = false;
                 refs[i + 1].focus();
             } else if (i === refs.length - 1) {
-                enterValue(values.join(''));
+                valueEntered(tmp.join(''));
             }
         }
     };

@@ -1,9 +1,15 @@
-import { FacilityInfoDto } from '@Types/Facility/FacilityInfoDto';
-import { FacilityMapDto } from '@Types/Facility/FacilityMapDto';
-import { GetAllFacilityDto } from '@Types/Facility/GetAllFacilityDto';
-import { GetAllMapFacilityDto } from '@Types/Facility/GetAllMapFacilityDto';
-import { GetAllPagFacilityDto } from '@Types/Facility/GetAllPagFacilityDto';
-import { UpdateFacilityDto } from '@Types/Facility/UpdateFacilityDto';
+//@ts-ignore
+import { FacilityInfoDto } from '@types/Facility/FacilityInfoDto';
+//@ts-ignore
+import { FacilityMapDto } from '@types/Facility/FacilityMapDto';
+//@ts-ignore
+import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
+//@ts-ignore
+import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
+//@ts-ignore
+import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
+//@ts-ignore
+import { UpdateFacilityDto } from '@types/Facility/UpdateFacilityDto';
 import { action, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 import { api } from '../api';

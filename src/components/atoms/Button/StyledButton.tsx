@@ -12,4 +12,10 @@ export const StyledButton = styled(Button)<Props>`
     font-weight: ${(props) => props.fw};
     border-radius: '${(props) => props.radius}px';
     text-transform: none;
+    ${(props) =>
+        props.size === 'large' &&
+        `
+    padding-top:11px;
+    padding-bottom:11px;
+    `}
 `;

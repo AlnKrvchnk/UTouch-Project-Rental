@@ -11,4 +11,14 @@ const Template: ComponentStory<typeof AuthForm> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    error: 'Error!',
+    isCodeDisplay: true,
+    timerIsWork: false,
+
+    setPhone: (value: string) => {},
+    setCode: (value: string) => {},
+    setError: (value: string) => {},
+    submitForm: () => {},
+    resendCode: () => {},
+};

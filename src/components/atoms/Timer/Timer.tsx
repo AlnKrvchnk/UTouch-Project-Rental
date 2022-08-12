@@ -31,17 +31,19 @@ const Timer = ({ isWork, timeInterval, timeOver }: Props) => {
         clearInterval(timerId);
         timeOver();
     };
+
     useEffect(() => {
         const m = String(Math.trunc(time / 60));
         const s = String(time % 60);
         setMinutes(m.length === 1 ? `0${m}` : m);
         setSeconds(s.length === 1 ? `0${s}` : s);
     }, [time]);
+
     useEffect(() => {
         setTicking(isWork);
     }, [isWork]);
     return (
-        <Typography variant="h5" color={'text.disable'}>
+        <Typography variant="h6" color={'text.disabled'}>
             {minutes}:{seconds}
         </Typography>
     );

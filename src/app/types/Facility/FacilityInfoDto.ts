@@ -1,7 +1,24 @@
-import { Facility } from './Facility';
+import { FacilityBenefit } from './FacilityBenefit';
+import { FacilityCommunication } from './FacilityCommunication';
+import { FacilityFlatDecoration } from './FacilityFlatDecoration';
+import { FacilityHouseClass } from './FacilityHouseClass';
+import { FacilityNewsDto } from './FacilityNewsDto';
+import { FacilityPaymentOption } from './FacilityPaymentOption';
+import { FacilityRegistration } from './FacilityRegistration';
+import { FacilityRoomCount } from './FacilityRoomCount';
+import { FacilityType } from './FaculityType';
 import { FileInfoDto } from './FileInfoDto';
 
-export interface FacilityInfoDto extends Facility {
+export interface FacilityInfoDto {
+    ownerId?: number;
+    distanceToTheBeach?: number;
+    developerId?: number;
+    roomsCount?: number;
+    cottageCount?: number;
+    floor?: number;
+    checkerboardId?: number;
+    deliveryDate?: string;
+
     id: string;
     isFavorite: boolean;
     developerName: string;
@@ -10,4 +27,42 @@ export interface FacilityInfoDto extends Facility {
     ownerName: string;
     ownerAvatar: string;
     isDelivered: boolean;
+    facilityType: FacilityType;
+    isIllegal: boolean;
+    name: string;
+    cX: number;
+    cY: number;
+    city: string;
+    address: string;
+    building: string;
+    price: number;
+    square: number;
+    pricePerMeter: number;
+    description: string;
+    district: string;
+    microDistrict: string;
+    flatsCount: number;
+    minPrice: number;
+    maxPrice: number;
+    minSquare: number;
+    maxSquare: number;
+    material: string;
+    parking: string;
+    territory: string;
+    ceilingHeight: number;
+    photoNames: string[];
+    registrations: FacilityRegistration[];
+    flatDecoration: FacilityFlatDecoration;
+    houseClass: FacilityHouseClass;
+    benefits: FacilityBenefit[];
+    communications: FacilityCommunication[];
+    paymentOptions: FacilityPaymentOption[];
+    installmentPlanOptions: string[];
+    sales: string[];
+    commissions: string[];
+    documentNames: string[];
+    apartmentLayouts: string[];
+    news: FacilityNewsDto[];
+    isEnabled: boolean;
+    roomCount: FacilityRoomCount;
 }
