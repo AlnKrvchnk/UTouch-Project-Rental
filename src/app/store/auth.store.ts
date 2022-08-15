@@ -47,7 +47,7 @@ class AuthStore {
         try {
             const token: AuthTokenDto = await api.auth.login(inform);
             // localStorage.setItem('token', token.token);
-            document.cookie = `authToken=${token.token}; Path=/; witcher=Geralt; SameSite=None; Secure`;
+            document.cookie = `authToken=${token.token}; Path=/; SameSite=None; Secure`;
             this.whoami();
         } catch (err) {
             //@ts-ignore
