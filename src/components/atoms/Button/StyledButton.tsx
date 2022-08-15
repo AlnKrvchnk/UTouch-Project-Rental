@@ -10,12 +10,11 @@ export interface Props extends ButtonProps {
 export const StyledButton = styled(Button)<Props>`
     font-size: ${(props) => props.fs};
     font-weight: ${(props) => props.fw};
-    border-radius: '${(props) => props.radius}px';
+    border-radius: ${(props) => props.radius}px;
     text-transform: none;
     ${(props) =>
         props.size === 'large' &&
         `
-    padding-top:11px;
-    padding-bottom:11px;
+    padding:11px 20px;
     `}
 `;

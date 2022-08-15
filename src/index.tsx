@@ -4,6 +4,7 @@ import AppStore from '@store/index';
 import Theme from '@styles/Theme';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import '../src/styles/reset.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(

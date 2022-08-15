@@ -1,19 +1,17 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const StyledAuthForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    box-shadow: 0px 4px 6px -2px rgba(100, 116, 139, 0.05),
-        0px 10px 15px -3px rgba(100, 116, 139, 0.12);
-    border-radius: 8px;
-    background: #ffffff;
-
-    & > *:not(:first-child) {
-        margin-top: 24px;
-    }
-    & > hr {
-        width: 100%;
-        color: #e6e8f0;
-    }
-`;
+export const StyledAuthForm = styled('form')(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 32,
+    boxShadow: theme.shadows[1],
+    borderRadius: 8,
+    background: theme.palette.background.paper,
+    '& > *:not(:first-child)': {
+        marginTop: 24,
+    },
+    '& > hr': {
+        width: '100%',
+        color: theme.palette.grey[300],
+    },
+}));

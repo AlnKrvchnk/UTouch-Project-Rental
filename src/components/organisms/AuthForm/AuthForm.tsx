@@ -52,14 +52,10 @@ const AuthForm = ({
                     Контент Менеджер
                 </Typography>
                 <EnterPhoneContainer
-                    valueEntered={(value) => setPhone(value)}
-                    setError={(value) => setError(value)}
+                    valueEntered={setPhone}
+                    setError={setError}
                 />
-                {isCodeDisplay && (
-                    <EnterCodeContainer
-                        valueEntered={(value) => setCode(value)}
-                    />
-                )}
+                {isCodeDisplay && <EnterCodeContainer valueEntered={setCode} />}
                 <Button
                     fullWidth
                     size={'large'}

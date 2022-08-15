@@ -6,15 +6,6 @@ import { FacilitySortBy } from './FacilitySortBy';
 export interface GetAllFacilityDto
     extends ReadFilterDto,
         CheckerboardFilterDto {
-    sort: FacilitySortBy;
-    category: FacilityCategory;
-
-    deliveryDateGte?: string;
-    deliveryDateLt?: string;
-
-    distanceToTheBeachGte?: number;
-    distanceToTheBeachLt?: number;
-
-    isDelivered: boolean;
-    showDisabled?: boolean;
+    sort?: FacilitySortBy;
+    category?: FacilityCategory;
 }

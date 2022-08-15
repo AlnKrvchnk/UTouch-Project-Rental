@@ -1,10 +1,13 @@
-import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
+//@ts-ignore
+//@ts-ignore
 import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
+//@ts-ignore
 import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
 
 export const facilities = {
     create: () => '/facilities',
-    getAll: (facilityFilter: GetAllFacilityDto) => '/facilities',
+    // getAll: (facilityFilter: GetAllPagFacilityDto) => '/facilities',
+    getAll: () => '/facilities?sort=pubdate&catagory=newbuilding',
     getAllPag: (facilityFilter: GetAllPagFacilityDto) => '/v2/facilities',
     getAllMap: (facilityFilter: GetAllMapFacilityDto) => '/facilities/map',
 

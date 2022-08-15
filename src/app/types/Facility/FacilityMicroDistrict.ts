@@ -1,1 +1,4 @@
-export enum FacilityMicroDistrict {}
+export enum FacilityMicroDistrict {
+    first = 'Первый',
+    second = 'Второй',
+}

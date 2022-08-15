@@ -25,9 +25,11 @@ const TextField = ({
     onKeyDown,
     value,
     disabled,
+    color,
 }: Props) => {
     return (
         <StyledTextField
+            color={color}
             id={id}
             label={label}
             variant={variant}

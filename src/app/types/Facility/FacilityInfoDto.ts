@@ -10,17 +10,17 @@ import { FacilityType } from './FaculityType';
 import { FileInfoDto } from './FileInfoDto';
 
 export interface FacilityInfoDto {
-    ownerId?: number;
-    distanceToTheBeach?: number;
-    developerId?: number;
-    roomsCount?: number;
-    cottageCount?: number;
-    floor?: number;
-    checkerboardId?: number;
-    deliveryDate?: string;
+    ownerId?: number | null;
+    distanceToTheBeach?: number | null;
+    developerId?: number | null;
+    roomsCount?: number | null;
+    cottageCount?: number | null;
+    floor?: number | null;
+    checkerboardId?: number | null;
+    deliveryDate?: string | null;
 
     id: string;
-    isFavorite: boolean;
+    isFavourite: boolean;
     developerName: string;
     developerAvatar: string;
     documents: FileInfoDto[];
@@ -51,7 +51,7 @@ export interface FacilityInfoDto {
     territory: string;
     ceilingHeight: number;
     photoNames: string[];
-    registrations: FacilityRegistration[];
+    registrations: FacilityRegistration;
     flatDecoration: FacilityFlatDecoration;
     houseClass: FacilityHouseClass;
     benefits: FacilityBenefit[];

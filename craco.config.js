@@ -13,6 +13,7 @@ module.exports = {
             '@utilites': path.resolve(__dirname, 'src/utilites'),
             '@styles': path.resolve(__dirname, 'src/styles/'),
             '@routes': path.resolve(__dirname, 'src/routes/'),
+            '@assets': path.resolve(__dirname, 'src/assets/'),
         },
     },
     jest: {
@@ -31,6 +32,7 @@ module.exports = {
                 '^@utilites/(.*)$': '<rootDir>/src/utilites$1',
                 '^@styles/(.*)$': '<rootDir>/src/styles$1',
                 '^@routes/(.*)$': '<rootDir>/src/routes$1',
+                '^@assetes/(.*)$': '<rootDir>/src/assets$1',
             },
         },
     },

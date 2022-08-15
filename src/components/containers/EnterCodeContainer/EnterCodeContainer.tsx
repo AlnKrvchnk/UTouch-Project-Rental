@@ -46,7 +46,6 @@ const EnterCodeContainer = ({ valueEntered }: Props) => {
         i: number,
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        console.log(refs);
         const value: string = e.target.value;
         if (value.length > 0 && i < refs.length) {
             const tmp = [...values];

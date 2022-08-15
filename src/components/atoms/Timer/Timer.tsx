@@ -5,9 +5,10 @@ export interface Props {
     isWork: boolean;
     timeInterval: number;
     timeOver: () => void;
+    color?: string;
 }
 
-const Timer = ({ isWork, timeInterval, timeOver }: Props) => {
+const Timer = ({ isWork, timeInterval, timeOver, color }: Props) => {
     const [minutes, setMinutes] = useState<string | undefined>();
     const [seconds, setSeconds] = useState<string | undefined>();
     const [isTicking, setTicking] = useState<boolean>(isWork);
@@ -43,7 +44,7 @@ const Timer = ({ isWork, timeInterval, timeOver }: Props) => {
         setTicking(isWork);
     }, [isWork]);
     return (
-        <Typography variant="h6" color={'text.disabled'}>
+        <Typography variant="h6" color={color}>
             {minutes}:{seconds}
         </Typography>
     );

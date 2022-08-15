@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 function App() {
     const store = useAppContext();
     const isAuth = store.auth.isAuth;
+    // const isAuth = true;
     return <div className="App">{isAuth ? <Private /> : <Public />}</div>;
 }
 

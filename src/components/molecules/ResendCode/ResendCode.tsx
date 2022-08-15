@@ -11,13 +11,13 @@ const ResendCode = ({ isWork, resendCode }: Props) => {
             <Link
                 underline="none"
                 variant="h6"
-                color="primary"
+                color="primary.main"
                 onClick={resendCode}
-                href="#!"
             >
                 Отправить код еще раз
             </Link>
             <Timer
+                color="grey.500"
                 isWork={isWork}
                 timeInterval={300}
                 timeOver={resendCode}

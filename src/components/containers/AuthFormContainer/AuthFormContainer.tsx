@@ -22,10 +22,9 @@ const AuthFormContainer = () => {
     };
     const resendCode = () => {
         setTimerWork(false);
-        console.log(timerIsWork);
-        console.log('resendCode');
+        console.log('resendCode')
+        // store.auth.getCode({ phone });
         setTimerWork(true);
-        console.log(timerIsWork);
     };
 
     return (

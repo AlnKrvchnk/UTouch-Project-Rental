@@ -2,8 +2,25 @@ import { createTheme } from '@mui/material';
 
 const Theme = createTheme({
     palette: {
+        //   action?: Partial<TypeAction>;
+        mode: 'light',
+        common: {
+            black: '#000',
+            white: '#fff',
+        },
+        background: {
+            default: '#E5E5E5',
+            paper: '#fff',
+        },
+        grey: {
+            300: '#E6E8F0',
+            500: '#9FA4AC',
+            900: '#323643',
+        },
         primary: {
+            // light:
             main: '#1F64E5',
+            // dark:
             contrastText: '#fff',
         },
         secondary: {
@@ -12,15 +29,44 @@ const Theme = createTheme({
         },
         // error: {},
         warning: { main: '#FAB005' },
-        // info: {},
+        info: {
+            main: '#FAEADE',
+            contrastText: '#FF8B2D',
+        },
         // success: {},
         text: {
             primary: '#111827',
             secondary: '#6B7280',
-            disabled: '#9FA4AC',
+            disabled: '#858585 ',
         },
     },
-    spacing: 4,
+    shadows: [
+        'none',
+        '0px 4px 6px -2px rgba(100, 116, 139, 0.05),0px 10px 15px -3px rgba(100, 116, 139, 0.12) ',
+        'inset 0px 0px 0px 1px #E6E8F0',
+        '0px 1px 1px rgba(100, 116, 139, 0.06), 0px 1px 2px rgba(100, 116, 139, 0.1);',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+    ],
     typography: {
         h1: {
             fontWeight: 700,
@@ -65,6 +111,11 @@ const Theme = createTheme({
         body1: {
             fontWeight: 500,
             fontSize: 16,
+            variantMapping: 'p',
+        },
+        body2: {
+            fontWeight: 400,
+            fontSize: 12,
             variantMapping: 'p',
         },
         fontFamily: ['Roboto', 'sans-serif'].join(','),

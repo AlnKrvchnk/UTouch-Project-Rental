@@ -1,9 +1,16 @@
+//@ts-ignore
 import { FacilityInfoDto } from '@types/Facility/FacilityInfoDto';
+//@ts-ignore
 import { FacilityMapDto } from '@types/Facility/FacilityMapDto';
+//@ts-ignore
 import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
+//@ts-ignore
 import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
+//@ts-ignore
 import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
+//@ts-ignore
 import { UpdateFacilityDto } from '@types/Facility/UpdateFacilityDto';
+//@ts-ignore
 import { RequestPaginationDto } from '@types/Pagination/RequestPaginationDto';
 import { facilities } from './endpoints';
 import Api from './index';
@@ -11,9 +18,9 @@ import Api from './index';
 export default class FacilitiesApi {
     constructor(private readonly api: Api) {}
     public getAll(
-        facilityFilter: GetAllFacilityDto
+        facilityFilter: GetAllFacilityDto | undefined
     ): Promise<FacilityInfoDto[]> {
-        return this.api.get(facilities.getAll(facilityFilter));
+        return this.api.get(facilities.getAll());
     }
     public getAllPag(
         facilityFilter: GetAllPagFacilityDto
