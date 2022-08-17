@@ -11,21 +11,23 @@ import { WhoamiDto } from '../types/Auth/WhomiDto';
 
 class AuthStore {
     @observable isPhoneSend: boolean = false;
-    // @observable isAuth: boolean = false;
+    @observable isLoading: boolean = false;
     @observable error: string | undefined = undefined;
     @observable user: WhoamiDto | undefined = undefined;
     constructor() {
         makeAutoObservable(this);
     }
+    @action
     public async whoami() {
+        this.isLoading = false;
         try {
-            console.log(document.cookie);
+            console.log('await');
             this.user = await api.auth.whoami();
         } catch (err) {
-            //@ts-ignore
-            // this.error = (err as Error).response.data.error_message;
-            this.user = { name: '', role: '' };
+            this.user = undefined;
+            console.log(err);
         }
+        this.isLoading = true;
     }
     @computed get isAuth() {
         return this.user !== undefined;
@@ -33,11 +35,9 @@ class AuthStore {
     @action
     public async getCode(phone: GetCodeDto) {
         try {
-            const req = await api.auth.getCode(phone);
-            console.log(req);
+            await api.auth.getCode(phone);
             this.isPhoneSend = true;
         } catch (err) {
-            console.log(err);
             //@ts-ignore
             this.error = (err as Error).response.data.error_message;
         }
@@ -46,8 +46,7 @@ class AuthStore {
     public async login(inform: LoginDto) {
         try {
             const token: AuthTokenDto = await api.auth.login(inform);
-            // localStorage.setItem('token', token.token);
-            document.cookie = `authToken=${token.token}; Path=/; SameSite=None; Secure`;
+            localStorage.setItem('token', `Bearer ${token.token}`);
             this.whoami();
         } catch (err) {
             //@ts-ignore

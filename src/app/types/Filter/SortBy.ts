@@ -1,4 +1,4 @@
-export enum FacilitySortBy {
+export enum SortBy {
     pubdate = 'По дате',
     pricedesc = 'По убыванию цены',
     priceasc = 'По возрастанию цены',

@@ -1,19 +1,11 @@
 import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
 import FacilityCard from '@/components/organisms/FacilityCard/FacilityCard';
-import { useNavigate } from 'react-router-dom';
 interface Props {
     item: FacilityInfoDto;
     itemLike: (id: FacilityInfoDto['id']) => void;
 }
 const FacilityCardContainer = ({ item, itemLike }: Props) => {
-    const navigate = useNavigate();
-    const handleCollection = () => {
-        console.log(`/${item.id}`);
-        navigate(`/${item.id}`, { replace: true });
-    };
-    const onItemLike = () => {
-        itemLike(item.id);
-    };
+    const handleCollection = () => {};
 
     return (
         <FacilityCard
@@ -27,7 +19,9 @@ const FacilityCardContainer = ({ item, itemLike }: Props) => {
             price={`от ${item.price}руб.`}
             isFavorite={item.isFavourite}
             itemCollection={handleCollection}
-            itemLike={onItemLike}
+            itemLike={() => {
+                itemLike(item.id);
+            }}
         />
     );
 };

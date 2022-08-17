@@ -7,11 +7,15 @@ interface Props {
 }
 const FacilityList = ({ items, onItemLike }: Props) => {
     return (
-        <div>
+        <>
             {items.map((item) => (
-                <FacilityCardContainer item={item} itemLike={onItemLike} />
+                <FacilityCardContainer
+                    key={`${item.id}`}
+                    item={item}
+                    itemLike={onItemLike}
+                />
             ))}
-        </div>
+        </>
     );
 };
 export default FacilityList;

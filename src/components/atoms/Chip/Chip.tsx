@@ -1,8 +1,12 @@
 import Button from '@components/atoms/Button/Button';
 import { RemoveIcon } from '@components/atoms/Icons/Icons';
-import { Props, StyledChip } from './StyledChip';
+import { Props as StyledProps, StyledChip } from './StyledChip';
 
-const Chip = ({ color, label, size, filter }: Props) => {
+interface Props extends StyledProps {
+    removeChip?: () => void;
+}
+
+const Chip = ({ color, label, size, filter, removeChip }: Props) => {
     return (
         <StyledChip
             color={color}
@@ -10,7 +14,7 @@ const Chip = ({ color, label, size, filter }: Props) => {
                 <span>
                     {label}{' '}
                     {filter && (
-                        <Button color="secondary">
+                        <Button color="secondary" onClick={removeChip}>
                             <RemoveIcon />
                         </Button>
                     )}

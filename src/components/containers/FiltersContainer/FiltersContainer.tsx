@@ -1,26 +1,36 @@
-import {
-    filterList,
-    FilterTitle,
-    ReadFilterDto,
-} from '@/app/types/Filter/ReadFilterDto';
+import { RangeFilter } from '@/app/types/Filter/RangeFilter';
+import { ReadFilterDto } from '@/app/types/Filter/ReadFilterDto';
 import FilterList from '@/components/organisms/FilterList/FilterList';
+import { useAppContext } from '@/contexts/StoreContext';
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
 
 const FiltersContainer = () => {
-    const [filter, setFilter] = useState<
-        { title: FilterTitle; content: ReadFilterDto }[]
-    >([]);
+    const store = useAppContext();
+    const isLoad = store.filter.isLoad;
+    const filter = toJS(store.filter.filterList);
+    const selectFilter = store.filter.selectFilter;
+    const [userFilter, setFilter] = useState<ReadFilterDto>({});
     useEffect(() => {
-        const tmp = [];
-        for (const k in filterList) {
-            //@ts-ignore
-            const t = FilterTitle[k];
-            //@ts-ignore
-            const c = filterList[k];
-            tmp.push({ title: t, content: c });
-        }
-        setFilter(tmp);
+        console.log(selectFilter);
+
+        setFilter(toJS(selectFilter));
+    }, [selectFilter]);
+    useEffect(() => {
+        store.filter.loadFilter();
     }, []);
-    return <FilterList items={filter} setItems={() => {}} />;
+    const setUserFilter = (filterKey: string, value: string | RangeFilter) => {
+        store.filter.setSelectFilter(filterKey, value);
+    };
+    return (
+        <FilterList
+            items={filter}
+            setFilterItem={(key, value) => {
+                setUserFilter(key, value);
+            }}
+            selectFilter={userFilter}
+        />
+    );
 };
-export default FiltersContainer;
+export default observer(FiltersContainer);

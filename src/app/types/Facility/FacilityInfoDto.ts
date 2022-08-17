@@ -51,7 +51,7 @@ export interface FacilityInfoDto {
     territory: string;
     ceilingHeight: number;
     photoNames: string[];
-    registrations: FacilityRegistration;
+    registrations: FacilityRegistration[];
     flatDecoration: FacilityFlatDecoration;
     houseClass: FacilityHouseClass;
     benefits: FacilityBenefit[];

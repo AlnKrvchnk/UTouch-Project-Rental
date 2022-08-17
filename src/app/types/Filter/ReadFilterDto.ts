@@ -1,11 +1,5 @@
-import { FacilityBenefit } from '../Facility/FacilityBenefit';
-import { FacilityDistrict } from '../Facility/FacilityDistrict';
-import { FacilityFlatDecoration } from '../Facility/FacilityFlatDecoration';
-import { FacilityHouseClass } from '../Facility/FacilityHouseClass';
-import { FacilityMicroDistrict } from '../Facility/FacilityMicroDistrict';
-import { FacilityPaymentOption } from '../Facility/FacilityPaymentOption';
-import { FacilityRegistration } from '../Facility/FacilityRegistration';
-import { FacilityType } from '../Facility/FaculityType';
+import { DeliveryDateDto } from './DeliveryDateDto';
+import { RangeFilter } from './RangeFilter';
 
 export enum FilterTitle {
     districts = 'Район',
@@ -25,33 +19,18 @@ export enum FilterTitle {
 }
 
 export interface ReadFilterDto {
-    districts?: FacilityDistrict[];
-    microDistricts?: FacilityMicroDistrict[];
-    facilityTypes?: FacilityType[];
-    benefits?: FacilityBenefit[];
-    registrations?: FacilityRegistration[];
-    decorations?: FacilityFlatDecoration[];
-    paymentOptions?: FacilityPaymentOption[];
-    houseClasses?: FacilityHouseClass[];
-    price?: number;
-    pricePerMeter?: number;
-    square?: number;
-    deliveryDate?: string;
-    distanceToTheBeach?: number;
-    deliveryDates?: string[];
+    districts?: string[];
+    microDistricts?: string[];
+    facilityTypes?: string[];
+    price?: RangeFilter;
+    pricePerMeter?: RangeFilter;
+    square?: RangeFilter;
+    registrations?: string[];
+    deliveryDate?: RangeFilter;
+    decorations?: string[];
+    paymentOptions?: string[];
+    houseClasses?: string[];
+    benefits?: string[];
+    distanceToTheBeach?: RangeFilter;
+    deliveryDates?: DeliveryDateDto[];
 }
-export const filterList: ReadFilterDto = {
-    districts: Object.values(FacilityDistrict),
-    microDistricts: Object.values(FacilityMicroDistrict),
-    facilityTypes: Object.values(FacilityType),
-    benefits: Object.values(FacilityBenefit),
-    registrations: Object.values(FacilityRegistration),
-    decorations: Object.values(FacilityFlatDecoration),
-    paymentOptions: Object.values(FacilityPaymentOption),
-    houseClasses: Object.values(FacilityHouseClass),
-    price: 0,
-    pricePerMeter: 0,
-    square: 0,
-    deliveryDate: '',
-    distanceToTheBeach: 0,
-};

@@ -1,3 +1,4 @@
+import { RangeFilter } from '@/app/types/Filter/RangeFilter';
 import Slider from '@/components/atoms/Slider/Slider';
 import TextField from '@/components/atoms/TextField/TextField';
 import { StyledSliderTextField } from './StyledSliderTextField';
@@ -5,17 +6,20 @@ interface Props {
     minDistance: number;
     value: number[];
     setValue: (value: number[]) => void;
-    label: string;
+    label?: string;
+    range?: RangeFilter;
 }
 const SliderTextField = ({
     minDistance,
     value,
     setValue,
+    range,
     label = '',
 }: Props) => {
     return (
         <StyledSliderTextField>
             <Slider
+                range={range}
                 minDistance={minDistance}
                 value={value}
                 setValue={setValue}
@@ -37,7 +41,7 @@ const SliderTextField = ({
                     placeholder={`до ${label}`}
                     type="number"
                     onChange={(event) =>
-                        setValue([value[1], Number(event.target.value)])
+                        setValue([value[0], Number(event.target.value)])
                     }
                 />
             </div>

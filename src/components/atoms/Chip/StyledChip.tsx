@@ -12,6 +12,9 @@ export const StyledChip = styled(Chip)<Props>(({ theme, filter }) => ({
     fontWeight: filter ? '500' : '700',
     fontSize: filter ? 13 : 14,
     margin: filter ? '8px auto' : '',
+    '&:not(:last-of-type)': {
+        marginRight: 8,
+    },
     '&>*': {
         padding: '0!important',
     },

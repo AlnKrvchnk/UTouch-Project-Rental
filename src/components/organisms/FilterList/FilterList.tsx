@@ -1,55 +1,80 @@
+import { RangeFilter } from '@/app/types/Filter/RangeFilter';
 import { FilterTitle, ReadFilterDto } from '@/app/types/Filter/ReadFilterDto';
 import CheckBox from '@/components/atoms/CheckBox/CheckBox';
+// eslint-disable-next-line max-len
+import SliderTextFieldContainer from '@/components/containers/SliderTextFieldContainer/SliderTextFieldContainer';
 import FilterItem from '@components/molecules/FilterItem/FilterItem';
-import SliderTextField from '@components/molecules/SliderTextField/SliderTextField';
 interface Props {
-    items: { title: FilterTitle; content: ReadFilterDto }[];
-    setItems: (content: ReadFilterDto) => void;
+    items: ReadFilterDto;
+    selectFilter: ReadFilterDto;
+    setFilterItem: (key: string, value: string | RangeFilter) => void;
 }
-const FilterList = ({ items }: Props) => {
-    const getComponent = (key: string, content: ReadFilterDto): JSX.Element => {
-        switch (typeof content) {
-            case 'object':
-                return (
-                    <div>
-                        {Object.values(content).map((item, index) => (
-                            <div key={`${key}-${index}`}>
-                                <CheckBox title={item} onChange={() => {}} />
-                            </div>
-                        ))}
-                    </div>
-                );
-            case 'number':
-                return (
-                    <SliderTextField
-                        minDistance={10}
-                        value={[10, 20]}
-                        setValue={() => {}}
-                        label={'price'}
-                    />
-                );
-            default:
-                return <span>Default</span>;
-        }
-    };
-
+const FilterList = ({ items, setFilterItem, selectFilter }: Props) => {
     return (
         <div>
-            {items.map((item, index) => (
+            {Object.keys(items).map((key) => (
                 <FilterItem
-                    key={`filter-${index}-${item}`}
-                    id={`${index}`}
-                    title={item.title}
-                    onChange={(e) => {
-                        console.log(e);
-                    }}
-                    content={getComponent(
-                        `filter-${index}-${item}`,
-                        item.content
-                    )}
+                    key={`filter-key${key}`}
+                    id={`${key}`}
+                    //@ts-ignore
+                    title={FilterTitle[key]}
+                    //@ts-ignore
+                    content={getComponent(key, items[key])}
                 />
             ))}
         </div>
     );
+    function s(key: string, item: string) {
+        //@ts-ignore
+        if (key in selectFilter)
+            console.log(
+                //@ts-ignore
+                selectFilter[key].indexOf(item),
+                item,
+                //@ts-ignore
+                selectFilter[key]
+            );
+        //@ts-ignore
+        return key in selectFilter && item in selectFilter[key];
+    }
+    function getComponent(key: string, content: Object) {
+        if (content instanceof Array) {
+            return (
+                <div>
+                    {Object.values(content).map((item) =>
+                        item instanceof Object ? (
+                            <CheckBox
+                                key={`${key}-${item}`}
+                                title={Object.values(item).join(' ')}
+                                onChange={() => setFilterItem(key, item)}
+                                checked={
+                                    key in selectFilter &&
+                                    //@ts-ignore
+                                    item in selectFilter[key]
+                                }
+                            />
+                        ) : (
+                            <CheckBox
+                                key={`${key}-${item}`}
+                                title={item}
+                                onChange={() => setFilterItem(key, item)}
+                                checked={
+                                    key in selectFilter &&
+                                    //@ts-ignore
+                                    selectFilter[key].indexOf(item) !== -1
+                                }
+                            />
+                        )
+                    )}
+                </div>
+            );
+        }
+        return (
+            <SliderTextFieldContainer
+                range={content as RangeFilter}
+                setFilterValue={(value) => setFilterItem(key, value)}
+            />
+        );
+    }
 };
 export default FilterList;

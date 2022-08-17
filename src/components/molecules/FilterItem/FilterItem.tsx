@@ -11,7 +11,7 @@ interface Props {
     id: string;
     title: string;
     content: JSX.Element;
-    onChange: (e: FormEvent<HTMLDivElement>) => void;
+    onChange?: (e: FormEvent<HTMLDivElement>) => void;
 }
 
 const FilterItem = ({ id, title, content, onChange }: Props) => {

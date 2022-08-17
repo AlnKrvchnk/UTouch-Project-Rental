@@ -12,7 +12,7 @@ interface Props {
     id: string;
     title: string;
     isDelivered: boolean;
-    registrations: FacilityRegistration;
+    registrations: FacilityRegistration[];
     address: string;
     cottageCount: string;
     pricePerMeter: string;

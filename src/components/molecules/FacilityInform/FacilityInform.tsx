@@ -9,7 +9,7 @@ interface Props {
     id: string;
     title: string;
     isDelivered: boolean;
-    registrations: FacilityRegistration;
+    registrations: FacilityRegistration[];
     address: string;
     cottageCount: string;
     pricePerMeter: string;
@@ -37,7 +37,9 @@ const FacilityInform = ({
                 </Typography>
                 <div className="label">
                     {isDelivered && <Chip color={'info'} label={'Сдан'} />}
-                    <Chip color={'primary'} label={registrations} />
+                    {registrations.map((item) => (
+                        <Chip color={'primary'} label={item} />
+                    ))}
                 </div>
                 <Typography variant={'body2'} color={'text.disabled'}>
                     <Typography color={'grey.900'} sx={{ marginRight: '8px' }}>

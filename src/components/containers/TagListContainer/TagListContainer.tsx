@@ -1,8 +1,10 @@
-import { FacilityCategory } from '@/app/types/Facility/FacilityCategory';
+import { FacilityCategory } from '@/app/types/Filter/FacilityCategory';
 import TagList from '@/components/molecules/TagList/TagList';
+import { useAppContext } from '@/contexts/StoreContext';
 import { useEffect, useState } from 'react';
 
 const TagListContainer = () => {
+    const store = useAppContext();
     const [activeTag, setActiveTag] = useState<FacilityCategory | undefined>();
     const items: FacilityCategory[] = [
         FacilityCategory.newbuilding,
@@ -15,10 +17,7 @@ const TagListContainer = () => {
     ];
     useEffect(() => {
         if (activeTag !== undefined) {
-            for (let item in FacilityCategory) {
-                //@ts-ignore
-                if (FacilityCategory[item] === activeTag) console.log(item);
-            }
+            store.filter.setCategory(activeTag as FacilityCategory);
         }
     }, [activeTag]);
     return (

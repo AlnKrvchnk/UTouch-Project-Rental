@@ -1,4 +1,4 @@
-import { FacilityCategory } from '@/app/types/Facility/FacilityCategory';
+import { FacilityCategory } from '@/app/types/Filter/FacilityCategory';
 import Tag from '@/components/atoms/Tag/Tag';
 import { StyledTagList } from './StyledTagList';
 

@@ -1,5 +1,4 @@
-//@ts-ignore
-import { FacilityInfoDto } from '@types/Facility/FacilityInfoDto';
+import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
 //@ts-ignore
 import { FacilityMapDto } from '@types/Facility/FacilityMapDto';
 //@ts-ignore
@@ -18,9 +17,9 @@ import Api from './index';
 export default class FacilitiesApi {
     constructor(private readonly api: Api) {}
     public getAll(
-        facilityFilter: GetAllFacilityDto | undefined
+        facilityFilter: GetAllFacilityDto
     ): Promise<FacilityInfoDto[]> {
-        return this.api.get(facilities.getAll());
+        return this.api.get(facilities.getAll(facilityFilter));
     }
     public getAllPag(
         facilityFilter: GetAllPagFacilityDto

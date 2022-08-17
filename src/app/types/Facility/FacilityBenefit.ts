@@ -24,4 +24,8 @@ export enum FacilityBenefit {
     cafesRestaurants = 'Кафе и рестораны в шаговой доступности',
     commercialSquares = 'Коммерчиские площади',
     congressHall = 'Конгресс-холл',
+    FreeLayout = 'Свободная планировка',
+    ownCableCar = 'Собственная канатная дорога',
+    ownBoiler = 'Собственная котельная',
+    operatedRoof = 'Эксплуатируемая кровля',
 }
