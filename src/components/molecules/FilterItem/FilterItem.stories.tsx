@@ -1,4 +1,3 @@
-import Typography from '@mui/material/Typography';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import FilterItem from './FilterItem';
 
@@ -13,7 +12,5 @@ const Template: ComponentStory<typeof FilterItem> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    id: '1',
     title: 'Title',
-    content: <Typography>Content</Typography>,
 };

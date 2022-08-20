@@ -1,22 +1,16 @@
-import { FacilityInfoDto } from '../types/Facility/FacilityInfoDto';
+import { FavouriteInfoDto } from '../types/Favourite/FavouriteInfoDto';
 import { favorites } from './endpoints';
 import Api from './index';
 
 export default class FavoritesFacilityApi {
     constructor(private readonly api: Api) {}
-    public create(id: number): Promise<FacilityInfoDto> {
+    public create(id: string): Promise<FavouriteInfoDto> {
         return this.api.post(favorites.create(), { facilityId: id });
     }
-    public getFavorites(): Promise<
-        {
-            id: number;
-            userId: number;
-            facility: FacilityInfoDto;
-        }[]
-    > {
+    public getFavorites(): Promise<FavouriteInfoDto[]> {
         return this.api.get(favorites.getFavorites());
     }
-    public getById(id: string): Promise<FacilityInfoDto> {
+    public getById(id: string): Promise<FavouriteInfoDto> {
         return this.api.get(favorites.getById(id));
     }
 

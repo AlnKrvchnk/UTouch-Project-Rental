@@ -27,6 +27,13 @@ export const auth = {
 export const filters = {
     getFilters: () => '/filters',
 };
+export const files = {
+    uploadImage: () => '/files/uploadImage',
+    getImage: (filename: string) => `/files/getImage/${filename}`,
+    uploadDocument: () => '/files/uploadDocument',
+    getDocument: (filename: string) => `/files/getDocument/${filename}`,
+};
+
 export const favorites = {
     create: () => '/favourites',
     getFavorites: () => '/favourites',

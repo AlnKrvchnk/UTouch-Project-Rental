@@ -7,7 +7,8 @@ import { StyledSearch } from './StyledSearch';
 interface Props {
     value: string;
     setValue: (value: string) => void;
-    showMap: () => void;
+    onShowMap: () => void;
+    showMap: boolean;
     placeholder?: string;
     searchValue: () => void;
 }
@@ -17,11 +18,15 @@ const Search = ({
     value,
     setValue,
     showMap,
+    onShowMap,
     searchValue,
 }: Props) => {
     return (
         <StyledSearch>
-            <Button variant="outlined" onClick={showMap}>
+            <Button
+                onClick={onShowMap}
+                variant={showMap ? 'contained' : 'outlined'}
+            >
                 <MapIcon />
             </Button>
             <TextField
@@ -29,6 +34,7 @@ const Search = ({
                 placeholder={placeholder}
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
+                onSubmit={searchValue}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">

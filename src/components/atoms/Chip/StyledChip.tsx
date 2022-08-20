@@ -7,6 +7,7 @@ export interface Props extends ChipProps {
 
 export const StyledChip = styled(Chip)<Props>(({ theme, filter }) => ({
     borderRadius: filter ? 16 : 4,
+    maxWidth: filter ? 'auto' : '100px',
     backdropFilter: filter ? 'none' : 'blur(19px)',
     padding: filter ? '4px 6px 4px 12px' : '16px 8px',
     fontWeight: filter ? '500' : '700',

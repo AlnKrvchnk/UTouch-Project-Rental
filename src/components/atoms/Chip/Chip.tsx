@@ -10,6 +10,7 @@ const Chip = ({ color, label, size, filter, removeChip }: Props) => {
     return (
         <StyledChip
             color={color}
+            title={String(label)}
             label={
                 <span>
                     {label}{' '}

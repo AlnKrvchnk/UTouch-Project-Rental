@@ -1,10 +1,10 @@
 import { styled } from '@mui/material/styles';
 export const StyledFacilityInform = styled('div')(({ theme }) => ({
     display: 'flex',
+    width: '100%',
     '> .img': {
-        maxWidth: 360,
-        width: '100%',
-        height: 'auto',
+        width: 360,
+        height: 255,
         marginRight: 24,
         '>img': {
             objectFit: 'cover',
@@ -13,20 +13,12 @@ export const StyledFacilityInform = styled('div')(({ theme }) => ({
         },
     },
     '> .inform': {
-        '.label': {
-            marginTop: 16,
-            marginBottom: 24,
-            '>*:not(:first-child)': {
-                marginLeft: 8,
-            },
-        },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         '>*:last-child': {
-            marginTop: 72,
             fontSize: 18,
-            fontWidtg: 500,
-        },
-        '>*': {
-            display: 'flex',
+            fontWidth: '500',
         },
     },
 }));

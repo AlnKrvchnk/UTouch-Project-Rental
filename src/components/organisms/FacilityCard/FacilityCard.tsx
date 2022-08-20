@@ -1,10 +1,5 @@
 import { FacilityRegistration } from '@/app/types/Facility/FacilityRegistration';
-import Button from '@/components/atoms/Button/Button';
-import {
-    CollectionsIcon,
-    LikeIcon,
-    SolidLikeIcon,
-} from '@components/atoms/Icons/Icons';
+import FacilityCardControl from '@components/molecules/FacilityCardControls/FacilityCardControls';
 import FacilityInform from '@components/molecules/FacilityInform/FacilityInform';
 import { StyledFacilityCard } from './StyledFacilityCard';
 
@@ -18,6 +13,7 @@ interface Props {
     pricePerMeter: string;
     price: string;
     isFavorite: boolean;
+    image: string[];
     itemCollection: () => void;
     itemLike: () => void;
 }
@@ -32,6 +28,7 @@ const FacilityCard = ({
     pricePerMeter,
     price,
     isFavorite,
+    image,
     itemCollection,
     itemLike,
 }: Props) => {
@@ -46,27 +43,14 @@ const FacilityCard = ({
                 cottageCount={cottageCount}
                 pricePerMeter={pricePerMeter}
                 price={price}
+                image={image}
             />
-            <div className="controls">
-                <Button
-                    variant={'outlined'}
-                    color={'primary'}
-                    radius={8}
-                    size={'large'}
-                    onClick={itemCollection}
-                >
-                    <CollectionsIcon />
-                </Button>
-                <Button
-                    variant={'outlined'}
-                    color={'primary'}
-                    radius={8}
-                    size={'large'}
-                    onClick={itemLike}
-                >
-                    {isFavorite ? <SolidLikeIcon /> : <LikeIcon />}
-                </Button>
-            </div>
+            <FacilityCardControl
+                onCollection={itemCollection}
+                onLike={itemLike}
+                isCollection={false}
+                isFavorite={isFavorite}
+            />
         </StyledFacilityCard>
     );
 };

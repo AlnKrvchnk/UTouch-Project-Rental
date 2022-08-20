@@ -1,6 +1,9 @@
+import { RangeFilter } from '@/app/types/Filter/RangeFilter';
+import CheckBox from '@/components/atoms/CheckBox/CheckBox';
 import { ExpandMoreIcon } from '@components/atoms/Icons/Icons';
 import Typography from '@mui/material/Typography';
-import { FormEvent } from 'react';
+// eslint-disable-next-line max-len
+import SliderTextFieldContainer from '@/components/containers/SliderTextFieldContainer/SliderTextFieldContainer';
 import {
     StyledAccordion,
     StyledAccordionDetails,
@@ -8,26 +11,60 @@ import {
 } from './StyledFilterItem';
 
 interface Props {
-    id: string;
     title: string;
-    content: JSX.Element;
-    onChange?: (e: FormEvent<HTMLDivElement>) => void;
+    isCheckbox?: boolean;
+    isSlider?: boolean;
+    value: string[] | RangeFilter;
+    selectValue?: string[] | RangeFilter;
+    onChange: (value: RangeFilter | string) => void;
+    label?: string;
 }
 
-const FilterItem = ({ id, title, content, onChange }: Props) => {
+const FilterItem = ({
+    title,
+    isCheckbox = false,
+    isSlider = false,
+    value,
+    label,
+    selectValue,
+    onChange,
+}: Props) => {
     return (
         <StyledAccordion>
             <StyledAccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls={`${id}-content`}
-                id={`${id}-header`}
+                aria-controls={`${title}-content`}
+                id={`${title}-header`}
             >
                 <Typography variant="h5" color={'common.black'}>
                     {title}
                 </Typography>
             </StyledAccordionSummary>
-            <StyledAccordionDetails onChange={onChange}>
-                {content}
+            <StyledAccordionDetails>
+                <>
+                    {isCheckbox &&
+                        (value as Array<string>).map((item, index) => (
+                            <CheckBox
+                                key={`${item}-${index}`}
+                                title={item}
+                                onChange={() => onChange(item)}
+                                checked={
+                                    selectValue !== undefined &&
+                                    (selectValue as Array<string>).indexOf(
+                                        item
+                                    ) !== -1
+                                }
+                            />
+                        ))}
+                    {isSlider && (
+                        <SliderTextFieldContainer
+                            range={value as RangeFilter}
+                            setFilterValue={(value) => onChange(value)}
+                            value={selectValue as RangeFilter}
+                            label={label || ''}
+                        />
+                    )}
+                </>
             </StyledAccordionDetails>
         </StyledAccordion>
     );

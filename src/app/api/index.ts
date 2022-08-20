@@ -3,12 +3,14 @@ import AuthApi from './auth.api';
 import { config } from './config';
 import FacilitiesApi from './facilities.api';
 import FavoritesFacilityApi from './favorites.api';
+import FilesApi from './files.api';
 import FiltersApi from './filters.api';
 class Api {
     private readonly client: AxiosInstance;
     public readonly facilities: FacilitiesApi;
     public readonly auth: AuthApi;
     public readonly filters: FiltersApi;
+    public readonly files: FilesApi;
     public readonly favoritesFacility: FavoritesFacilityApi;
     constructor() {
         this.client = axios.create(config);
@@ -16,6 +18,7 @@ class Api {
         this.facilities = new FacilitiesApi(this);
         this.auth = new AuthApi(this);
         this.filters = new FiltersApi(this);
+        this.files = new FilesApi(this);
         this.favoritesFacility = new FavoritesFacilityApi(this);
         this.client.interceptors.request.use((config) => ({
             ...config,

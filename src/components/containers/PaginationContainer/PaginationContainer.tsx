@@ -7,9 +7,11 @@ interface Props {
 const PaginationContainer = ({ pageCount, page, setPage }: Props) => {
     const prevPage = () => {
         page > 1 && setPage(page - 1);
+        window.scrollTo(0, 0);
     };
     const nextPage = () => {
         page < pageCount && setPage(page + 1);
+        window.scrollTo(0, 0);
     };
     return (
         <PaginationLabel

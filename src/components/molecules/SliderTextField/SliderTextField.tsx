@@ -6,8 +6,8 @@ interface Props {
     minDistance: number;
     value: number[];
     setValue: (value: number[]) => void;
-    label?: string;
-    range?: RangeFilter;
+    label: string;
+    range: RangeFilter;
 }
 const SliderTextField = ({
     minDistance,

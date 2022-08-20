@@ -4,4 +4,5 @@ import { SortBy } from '../Filter/SortBy';
 export interface GetAllFacilityDto extends ReadFilterDto {
     sort?: SortBy;
     category?: FacilityCategory;
+    searchQuery?: string;
 }

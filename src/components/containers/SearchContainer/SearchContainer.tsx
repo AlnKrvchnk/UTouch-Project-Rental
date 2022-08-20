@@ -1,17 +1,18 @@
 import Search from '@/components/molecules/Search/Search';
 import { useMemo, useState } from 'react';
 interface Props {
-    showMap: () => void;
-    search: (value: string) => void;
+    onShowMap: () => void;
+    showMap: boolean;
+    search: (value: string | undefined) => void;
 }
-const SearchContainer = ({ showMap, search }: Props) => {
+const SearchContainer = ({ onShowMap, showMap, search }: Props) => {
     const [value, setValue] = useState<string>('');
 
     const isDisabled = useMemo(() => {
         return value.length === 0;
     }, [value]);
     const onSearch = () => {
-        !isDisabled && search(value);
+        !isDisabled ? search(value) : search(undefined);
     };
     return (
         <div>
@@ -19,6 +20,7 @@ const SearchContainer = ({ showMap, search }: Props) => {
                 searchValue={onSearch}
                 value={value}
                 showMap={showMap}
+                onShowMap={onShowMap}
                 setValue={setValue}
             />
         </div>

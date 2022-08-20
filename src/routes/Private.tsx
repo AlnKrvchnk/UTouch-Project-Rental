@@ -1,4 +1,4 @@
-import AppBar from '@/components/organisms/AppBar/AppBar';
+import AppBarContainer from '@/components/containers/AppBarContainer/AppBarContainer';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import {
     Catalog,
@@ -11,12 +11,7 @@ import { Paths } from './Paths';
 const Private = () => {
     return (
         <>
-            <AppBar
-                showMap={() => {}}
-                search={(value) => {
-                    console.log(value);
-                }}
-            />
+            <AppBarContainer />
             <Routes>
                 <Route path={Paths.Catalog} element={<Catalog />} />
                 <Route path={Paths.News} element={<News />} />

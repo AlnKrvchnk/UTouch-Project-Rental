@@ -1,31 +1,36 @@
 import { RangeFilter } from '@/app/types/Filter/RangeFilter';
 import SliderTextField from '@/components/molecules/SliderTextField/SliderTextField';
 import { useEffect, useState } from 'react';
+import { useDebounce } from 'use-debounce';
 interface Props {
     setFilterValue: (value: RangeFilter) => void;
     minDistance?: number;
     range: RangeFilter;
     value?: RangeFilter;
+    label: string;
 }
 const SliderTextFieldContainer = ({
     setFilterValue,
     minDistance,
     range,
+    value,
+    label,
 }: Props) => {
-    const [value, setValue] = useState<number[]>([range.min, range.max]);
+    const [sliderValue, setValue] = useState<RangeFilter>(value || range);
     const [firstSet, setFirstSet] = useState<boolean>(true);
+    const [debounceValue] = useDebounce(sliderValue, 1000);
     useEffect(() => {
-        !firstSet &&
-            setFilterValue({ min: value[0], max: value[1] } as RangeFilter);
+        !firstSet && setFilterValue(debounceValue);
         setFirstSet(false);
-    }, [value]);
+    }, [debounceValue]);
 
     return (
         <SliderTextField
-            minDistance={10}
+            minDistance={minDistance || 0}
             range={range}
-            value={value}
-            setValue={(value) => setValue(value)}
+            value={[sliderValue.min, sliderValue.max]}
+            setValue={(value) => setValue({ min: value[0], max: value[1] })}
+            label={label}
         />
     );
 };

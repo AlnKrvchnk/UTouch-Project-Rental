@@ -1,10 +1,14 @@
 import { FacilityRegistration } from '@/app/types/Facility/FacilityRegistration';
-import Chip from '@/components/atoms/Chip/Chip';
-import temporaryImage from '@assets/images/authPage.jpg';
-import { DotsIcon, PlaceIcon } from '@components/atoms/Icons/Icons';
+// import ImageContainer from '@/components/containers/ImageContainer/ImageContainer';
+import FacilityInformChips from '@components/molecules/FacilityInformChips/FacilityInformChips';
+import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
+import { lazy, Suspense } from 'react';
+import FacilityInformDetail from '../FacilityInformDetail/FacilityInformDetail';
 import { StyledFacilityInform } from './StyledFacilityInform';
-
+const ImageContainer = lazy(
+    () => import('@/components/containers/ImageContainer/ImageContainer')
+);
 interface Props {
     id: string;
     title: string;
@@ -13,46 +17,51 @@ interface Props {
     address: string;
     cottageCount: string;
     pricePerMeter: string;
+    image: string[];
     price: string;
 }
 
 const FacilityInform = ({
     id,
     title,
-    isDelivered = true,
+    isDelivered,
     registrations,
     address,
     cottageCount,
+    image,
     pricePerMeter,
     price,
 }: Props) => {
     return (
-        <StyledFacilityInform id={id}>
+        <StyledFacilityInform>
             <div className="img">
-                <img src={temporaryImage} alt={title} />
+                <Suspense
+                    fallback={
+                        <Skeleton
+                            variant="rectangular"
+                            width={'100%'}
+                            height={'100%'}
+                        />
+                    }
+                >
+                    <ImageContainer src={image} title={title} />
+                </Suspense>
             </div>
             <div className="inform">
-                <Typography variant={'h3'} color={'common.black'}>
-                    {title}
-                </Typography>
-                <div className="label">
-                    {isDelivered && <Chip color={'info'} label={'Сдан'} />}
-                    {registrations.map((item) => (
-                        <Chip color={'primary'} label={item} />
-                    ))}
+                <div>
+                    <Typography variant={'h3'} color={'common.black'}>
+                        {title}
+                    </Typography>
+                    <FacilityInformChips
+                        isDelivered={isDelivered}
+                        registrations={registrations}
+                    />
+                    <FacilityInformDetail
+                        address={address}
+                        cottageCount={cottageCount}
+                        pricePerMeter={pricePerMeter}
+                    />
                 </div>
-                <Typography variant={'body2'} color={'text.disabled'}>
-                    <Typography color={'grey.900'} sx={{ marginRight: '8px' }}>
-                        <PlaceIcon />
-                    </Typography>
-                    {address}
-                </Typography>
-                <Typography variant={'body2'} color={'text.disabled'}>
-                    <Typography color={'grey.900'} sx={{ marginRight: '8px' }}>
-                        <DotsIcon />
-                    </Typography>
-                    {cottageCount}, {pricePerMeter}
-                </Typography>
                 <Typography color={'primary'}>{price}</Typography>
             </div>
         </StyledFacilityInform>

@@ -1,4 +1,4 @@
 const Collections = () => {
-    return <div>ColectionPage</div>;
+    return <div />;
 };
 export default Collections;

@@ -3,9 +3,10 @@ import FacilityCardContainer from '@/components/containers/FacilityCardContainer
 
 interface Props {
     items: FacilityInfoDto[];
-    onItemLike: (id: FacilityInfoDto['id']) => void;
+    onItemLike: (id: string) => void;
+    onItemCollection: (id: string) => void;
 }
-const FacilityList = ({ items, onItemLike }: Props) => {
+const FacilityList = ({ items, onItemLike, onItemCollection }: Props) => {
     return (
         <>
             {items.map((item) => (
@@ -13,6 +14,7 @@ const FacilityList = ({ items, onItemLike }: Props) => {
                     key={`${item.id}`}
                     item={item}
                     itemLike={onItemLike}
+                    itemCollection={onItemCollection}
                 />
             ))}
         </>

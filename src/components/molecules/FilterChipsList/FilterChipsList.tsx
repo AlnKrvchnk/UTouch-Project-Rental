@@ -2,8 +2,8 @@ import Chip from '@/components/atoms/Chip/Chip';
 import { StyledFilterChipsList } from './StyledFilterChipsList';
 
 interface Props {
-    items: { key: string; value: string }[];
-    removeItems: (key: string) => void;
+    items: { title: string; value: string }[];
+    removeItems: (title: string) => void;
 }
 
 const FilterChipsList = ({ items, removeItems }: Props) => {
@@ -11,11 +11,11 @@ const FilterChipsList = ({ items, removeItems }: Props) => {
         <StyledFilterChipsList>
             {items.map((item) => (
                 <Chip
-                    key={`${item.key}-${item.value}`}
-                    label={item.value}
+                    key={`${item.title}`}
+                    label={`${item.title}: ${item.value}`}
                     filter
                     color={'primary'}
-                    removeChip={() => removeItems(item.key)}
+                    removeChip={() => removeItems(item.title)}
                 ></Chip>
             ))}
         </StyledFilterChipsList>

@@ -1,18 +1,12 @@
-//@ts-ignore
-import { FacilityInfoDto } from '@types/Facility/FacilityInfoDto';
-//@ts-ignore
-import { FacilityMapDto } from '@types/Facility/FacilityMapDto';
-//@ts-ignore
-import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
-//@ts-ignore
-import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
-//@ts-ignore
-import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
-//@ts-ignore
-import { UpdateFacilityDto } from '@types/Facility/UpdateFacilityDto';
+import { api } from '@/app/api';
+import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
+import { FacilityMapDto } from '@/app/types/Facility/FacilityMapDto';
+import { GetAllFacilityDto } from '@/app/types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '@/app/types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '@/app/types/Facility/GetAllPagFacilityDto';
+import { UpdateFacilityDto } from '@/app/types/Facility/UpdateFacilityDto';
 import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
-import { api } from '../api';
 
 class TodoStore {
     @observable page: number | undefined = undefined;
@@ -26,6 +20,9 @@ class TodoStore {
     }
     @computed get isLoad() {
         return this.data.length !== 0;
+    }
+    @computed get totalPageCount() {
+        return this.total && this.limit && Math.ceil(this.total / this.limit);
     }
 
     @action
@@ -68,7 +65,6 @@ class TodoStore {
     public async getAllPag(facilityFilter: GetAllPagFacilityDto) {
         try {
             const requestRes = await api.facilities.getAllPag(facilityFilter);
-            // {this.page, this.limit, this.total, this.data} = requestRes;
             this.page = requestRes.page;
             this.limit = requestRes.limit;
             this.total = requestRes.total;
