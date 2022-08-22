@@ -3,6 +3,7 @@ export const StyledFacilityInform = styled('div')(({ theme }) => ({
     display: 'flex',
     width: '100%',
     '> .img': {
+        cursor: 'pointer',
         width: 360,
         height: 255,
         marginRight: 24,

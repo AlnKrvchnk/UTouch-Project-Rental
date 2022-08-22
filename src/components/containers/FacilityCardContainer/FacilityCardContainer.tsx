@@ -5,8 +5,14 @@ interface Props {
     item: FacilityInfoDto;
     itemLike: (id: string) => void;
     itemCollection: (id: string) => void;
+    itemDetail: (id: string) => void;
 }
-const FacilityCardContainer = ({ item, itemLike, itemCollection }: Props) => {
+const FacilityCardContainer = ({
+    item,
+    itemLike,
+    itemCollection,
+    itemDetail,
+}: Props) => {
     return (
         <FacilityCard
             id={item.id}
@@ -28,6 +34,7 @@ const FacilityCardContainer = ({ item, itemLike, itemCollection }: Props) => {
                 itemLike(item.id);
             }}
             image={item.photoNames}
+            itemDetail={() => itemDetail(item.id)}
         />
     );
 };

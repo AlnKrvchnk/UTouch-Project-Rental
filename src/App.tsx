@@ -1,9 +1,9 @@
-import CircularProgress from '@components/atoms/CircularProgress/CircularProgress';
 import { useAppContext } from '@context/StoreContext';
-import Private from '@routes/Private';
-import Public from '@routes/Public';
+import { CircularProgress } from '@mui/material';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
+import Private from './routes/Private';
+import Public from './routes/Public';
 function App() {
     const store = useAppContext();
     useEffect(() => {

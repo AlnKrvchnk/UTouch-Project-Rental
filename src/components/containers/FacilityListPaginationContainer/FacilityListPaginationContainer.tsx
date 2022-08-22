@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react-hooks/exhaustive-deps */
 import { GetAllPagFacilityDto } from '@/app/types/Facility/GetAllPagFacilityDto';
 import { FacilityCategory } from '@/app/types/Filter/FacilityCategory';
 import { ReadFilterDto } from '@/app/types/Filter/ReadFilterDto';
@@ -8,8 +6,10 @@ import PseudoFacilityCard from '@/components/organisms/PseudoFacilityCard/Pseudo
 import { useAppContext } from '@/contexts/StoreContext';
 import PaginationContainer from '@components/containers/PaginationContainer/PaginationContainer';
 import { StyledFacilityCard } from '@components/organisms/FacilityCard/StyledFacilityCard';
+import { Paths } from '@routes/Paths';
 import { observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FacilityListContainer from '../FacilityListContainer/FacilityListContainer';
 
 const FacilityListPaginationContainer = () => {
@@ -22,6 +22,7 @@ const FacilityListPaginationContainer = () => {
     const sortBy: string | undefined = store.filter.sortBy;
     const search: string | undefined = store.filter.search;
     const itemsList = store.facility.data;
+    const navigate = useNavigate();
 
     const updateitemList = () => {
         const actualFilter: GetAllPagFacilityDto = { ...filter };
@@ -48,6 +49,9 @@ const FacilityListPaginationContainer = () => {
     const handleItemCollection = (id: string) => {
         console.log(id);
     };
+    const handleItemDetail = (id: string) => {
+        navigate(`${Paths.Catalog}/${id}`, { replace: true });
+    };
     useEffect(() => {
         updateitemList();
     }, [page, category, sortBy, filter, search]);
@@ -58,6 +62,7 @@ const FacilityListPaginationContainer = () => {
                     itemsList={itemsList}
                     onItemLike={(id) => handleItemLike(id)}
                     onItemCollection={(id) => handleItemCollection(id)}
+                    onItemDetail={(id) => handleItemDetail(id)}
                 />
             ) : (
                 <>

@@ -1,13 +1,11 @@
-//@ts-ignore
-import { AuthTokenDto } from '@types/Auth/AuthTokenDto';
-//@ts-ignore
-import { GetCodeDto } from '@types/Auth/GetCodeDto';
-//@ts-ignore
-import { LoginDto } from '@types/Auth/LoginDto';
+import { AuthTokenDto } from '@/app/types/Auth/AuthTokenDto';
+import { GetCodeDto } from '@/app/types/Auth/GetCodeDto';
+import { LoginDto } from '@/app/types/Auth/LoginDto';
+import { WhoamiDto } from '@/app/types/Auth/WhomiDto';
+import { CustomError } from '@/app/types/Error/CustomError';
 import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 import { api } from '../api';
-import { WhoamiDto } from '../types/Auth/WhomiDto';
 
 class AuthStore {
     @observable isPhoneSend: boolean = false;
@@ -38,8 +36,7 @@ class AuthStore {
             await api.auth.getCode(phone);
             this.isPhoneSend = true;
         } catch (err) {
-            //@ts-ignore
-            this.error = (err as Error).response.data.error_message;
+            this.error = (err as CustomError).response.data.error_message;
         }
     }
     @action
@@ -49,8 +46,7 @@ class AuthStore {
             localStorage.setItem('token', `Bearer ${token.token}`);
             this.whoami();
         } catch (err) {
-            //@ts-ignore
-            this.error = (err as Error).response.data.error_message;
+            this.error = (err as CustomError).response.data.error_message;
         }
     }
 }

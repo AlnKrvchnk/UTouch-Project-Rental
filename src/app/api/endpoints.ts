@@ -1,10 +1,7 @@
+import { GetAllFacilityDto } from '@/app/types/Facility/GetAllFacilityDto';
+import { GetAllMapFacilityDto } from '@/app/types/Facility/GetAllMapFacilityDto';
+import { GetAllPagFacilityDto } from '@/app/types/Facility/GetAllPagFacilityDto';
 import formatedFilters from '@/utilites/formatedFilters';
-//@ts-ignore
-import { GetAllMapFacilityDto } from '@types/Facility/GetAllMapFacilityDto';
-//@ts-ignore
-import { GetAllPagFacilityDto } from '@types/Facility/GetAllPagFacilityDto';
-//@ts-ignore
-import { GetAllFacilityDto } from '@types/Facility/GetAllFacilityDto';
 
 export const facilities = {
     create: () => '/facilities',

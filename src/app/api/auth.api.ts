@@ -1,11 +1,7 @@
-//@ts-ignore
-import { AuthTokenDto } from '@types/Auth/AuthTokenDto';
-//@ts-ignore
-import { GetCodeDto } from '@types/Auth/GetCodeDto';
-//@ts-ignore
-import { LoginDto } from '@types/Auth/LoginDto';
-//@ts-ignore
-import { WhoamiDto } from '@types/Auth/WhomiDto';
+import { AuthTokenDto } from '@/app/types/Auth/AuthTokenDto';
+import { GetCodeDto } from '@/app/types/Auth/GetCodeDto';
+import { LoginDto } from '@/app/types/Auth/LoginDto';
+import { WhoamiDto } from '@/app/types/Auth/WhomiDto';
 
 import { auth } from './endpoints';
 import Api from './index';

@@ -16,6 +16,7 @@ interface Props {
     image: string[];
     itemCollection: () => void;
     itemLike: () => void;
+    itemDetail: () => void;
 }
 
 const FacilityCard = ({
@@ -31,6 +32,7 @@ const FacilityCard = ({
     image,
     itemCollection,
     itemLike,
+    itemDetail,
 }: Props) => {
     return (
         <StyledFacilityCard>
@@ -44,6 +46,7 @@ const FacilityCard = ({
                 pricePerMeter={pricePerMeter}
                 price={price}
                 image={image}
+                onDetail={itemDetail}
             />
             <FacilityCardControl
                 onCollection={itemCollection}

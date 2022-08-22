@@ -104,13 +104,13 @@ const Theme = createTheme({
             variantMapping: 'h6',
         },
         subtitle2: {
-            fontWeight: 400,
-            fontSize: 14,
+            fontWeight: 500,
+            fontSize: 16,
             variantMapping: 'h6',
         },
         body1: {
-            fontWeight: 500,
-            fontSize: 16,
+            fontWeight: 400,
+            fontSize: 14,
             variantMapping: 'p',
         },
         body2: {

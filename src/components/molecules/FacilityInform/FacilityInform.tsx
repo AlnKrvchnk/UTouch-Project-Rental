@@ -19,6 +19,7 @@ interface Props {
     pricePerMeter: string;
     image: string[];
     price: string;
+    onDetail: () => void;
 }
 
 const FacilityInform = ({
@@ -31,10 +32,11 @@ const FacilityInform = ({
     image,
     pricePerMeter,
     price,
+    onDetail,
 }: Props) => {
     return (
         <StyledFacilityInform>
-            <div className="img">
+            <div className="img" onClick={onDetail}>
                 <Suspense
                     fallback={
                         <Skeleton
@@ -49,7 +51,12 @@ const FacilityInform = ({
             </div>
             <div className="inform">
                 <div>
-                    <Typography variant={'h3'} color={'common.black'}>
+                    <Typography
+                        variant={'h3'}
+                        color={'common.black'}
+                        onClick={onDetail}
+                        sx={{ cursor: 'pointer' }}
+                    >
                         {title}
                     </Typography>
                     <FacilityInformChips

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import {
     Catalog,
     Collections,
+    FacilityDetail,
     Favorites,
     News,
     User,
@@ -18,6 +19,10 @@ const Private = () => {
                 <Route path={Paths.Collections} element={<Collections />} />
                 <Route path={Paths.Favorites} element={<Favorites />} />
                 <Route path={Paths.User} element={<User />} />
+                <Route
+                    path={`${Paths.Catalog}/:id`}
+                    element={<FacilityDetail />}
+                />
                 <Route
                     path={'*'}
                     element={<Navigate to={Paths.Catalog} replace />}

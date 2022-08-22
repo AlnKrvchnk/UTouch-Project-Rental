@@ -5,8 +5,14 @@ interface Props {
     items: FacilityInfoDto[];
     onItemLike: (id: string) => void;
     onItemCollection: (id: string) => void;
+    onItemDetail: (id: string) => void;
 }
-const FacilityList = ({ items, onItemLike, onItemCollection }: Props) => {
+const FacilityList = ({
+    items,
+    onItemLike,
+    onItemCollection,
+    onItemDetail,
+}: Props) => {
     return (
         <>
             {items.map((item) => (
@@ -15,6 +21,7 @@ const FacilityList = ({ items, onItemLike, onItemCollection }: Props) => {
                     item={item}
                     itemLike={onItemLike}
                     itemCollection={onItemCollection}
+                    itemDetail={onItemDetail}
                 />
             ))}
         </>
