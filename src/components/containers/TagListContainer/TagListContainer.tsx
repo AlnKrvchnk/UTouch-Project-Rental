@@ -1,7 +1,9 @@
 import { FacilityCategory } from '@/app/types/Filter/FacilityCategory';
 import TagList from '@/components/molecules/TagList/TagList';
 import { useAppContext } from '@/contexts/StoreContext';
+import { Paths } from '@/routes/Paths';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TagListContainer = () => {
     const store = useAppContext();
@@ -15,8 +17,11 @@ const TagListContainer = () => {
         FacilityCategory.popular,
         FacilityCategory.isillegal,
     ];
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (activeTag !== undefined) {
+            navigate(`${Paths.Catalog}`, { replace: true });
             store.filter.setCategory(activeTag as FacilityCategory);
         }
     }, [activeTag]);

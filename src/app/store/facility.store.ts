@@ -8,18 +8,21 @@ import { UpdateFacilityDto } from '@/app/types/Facility/UpdateFacilityDto';
 import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 
-class TodoStore {
+class FacilityStore {
     @observable page: number | undefined = undefined;
     @observable limit: number | undefined = undefined;
     @observable total: number | undefined = undefined;
     @observable facilityMap: FacilityMapDto | undefined = undefined;
     @observable facility: FacilityInfoDto | undefined = undefined;
-    @observable data: FacilityInfoDto[] = [];
+    @observable data: FacilityInfoDto[] | undefined = [];
     constructor() {
         makeAutoObservable(this);
     }
     @computed get isLoad() {
-        return this.data.length !== 0;
+        return this.data !== undefined;
+    }
+    @computed get isEmpty() {
+        return this.data && this.data.length !== 0;
     }
     @computed get totalPageCount() {
         return this.total && this.limit && Math.ceil(this.total / this.limit);
@@ -29,10 +32,12 @@ class TodoStore {
     public async update(id: string, facility: UpdateFacilityDto) {
         try {
             const requestRes = await api.facilities.update(id, facility);
-            const tmp = this.data.map((item) =>
-                item.id === id ? requestRes : item
-            );
-            this.data = tmp;
+            if (this.data) {
+                const tmp = this.data.map((item) =>
+                    item.id === id ? requestRes : item
+                );
+                this.data = tmp;
+            }
         } catch (err) {
             console.log(err);
         }
@@ -76,7 +81,7 @@ class TodoStore {
     @action
     public async delete(id: string) {
         try {
-            if (await api.facilities.delete(id)) {
+            if ((await api.facilities.delete(id)) && this.data) {
                 const tmp = this.data.filter((item) => item.id !== id);
                 this.data = tmp;
             }
@@ -86,4 +91,4 @@ class TodoStore {
     }
 }
 
-export default TodoStore;
+export default FacilityStore;

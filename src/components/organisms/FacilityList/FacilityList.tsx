@@ -2,7 +2,7 @@ import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
 import FacilityCardContainer from '@/components/containers/FacilityCardContainer/FacilityCardContainer';
 
 interface Props {
-    items: FacilityInfoDto[];
+    items?: FacilityInfoDto[];
     onItemLike: (id: string) => void;
     onItemCollection: (id: string) => void;
     onItemDetail: (id: string) => void;
@@ -15,15 +15,16 @@ const FacilityList = ({
 }: Props) => {
     return (
         <>
-            {items.map((item) => (
-                <FacilityCardContainer
-                    key={`${item.id}`}
-                    item={item}
-                    itemLike={onItemLike}
-                    itemCollection={onItemCollection}
-                    itemDetail={onItemDetail}
-                />
-            ))}
+            {items &&
+                items.map((item) => (
+                    <FacilityCardContainer
+                        key={`${item.id}`}
+                        item={item}
+                        itemLike={onItemLike}
+                        itemCollection={onItemCollection}
+                        itemDetail={onItemDetail}
+                    />
+                ))}
         </>
     );
 };

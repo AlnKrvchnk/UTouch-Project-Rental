@@ -3,14 +3,13 @@ import FacilityListPaginationContainer from '@components/containers/FacilityList
 import FilterChipsContainer from '@components/containers/FilterChipsContainer/FilterChipsContainer';
 import FiltersContainer from '@components/containers/FiltersContainer/FiltersContainer';
 import SortedContainer from '@components/containers/SortedContainer/SortedContainer';
+import { useEffect } from 'react';
 import { StyledCatalog } from './StyledCatalog';
-// const FacilityListContainer = lazy(
-//     () =>
-//         import(
-//             '@components/containers/FacilityListContainer/FacilityListContainer'
-//         )
-// );
+
 const Catalog = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <StyledCatalog>
             <SortedContainer />

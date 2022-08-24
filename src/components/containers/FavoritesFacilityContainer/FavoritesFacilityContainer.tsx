@@ -1,16 +1,16 @@
-import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
 import { useAppContext } from '@/contexts/StoreContext';
 import { Paths } from '@/routes/Paths';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FacilityListContainer from '../FacilityListContainer/FacilityListContainer';
 
 const FavoritesFacilityContainer = () => {
     const store = useAppContext();
     const isLoad = store.favoriteFacility.isLoad;
-    const [favoritesList, setFavoritesList] = useState<FacilityInfoDto[]>([]);
+    const favorites = store.favoriteFacility.favorites;
+
     const navigate = useNavigate();
 
     const handleItemLike = (id: string) => {
@@ -28,18 +28,11 @@ const FavoritesFacilityContainer = () => {
         store.favoriteFacility.getFavoriteFacility();
     }, []);
 
-    useEffect(() => {
-        if (isLoad) {
-            const favoriteFacilityInfo = toJS(store.favoriteFacility.favorites);
-            setFavoritesList(favoriteFacilityInfo.map((item) => item.facility));
-        }
-    }, [isLoad]);
-
     return (
         <FacilityListContainer
-            itemsList={toJS(store.favoriteFacility.favorites).map(
-                (item) => item.facility
-            )} //Почему здесь не обновляется useEffect????
+            itemsList={
+                favorites && toJS(favorites).map((item) => item.facility)
+            }
             onItemLike={(id) => handleItemLike(id)}
             onItemCollection={(id) => handleItemLike(id)}
             onItemDetail={(id) => handleItemDetail(id)}

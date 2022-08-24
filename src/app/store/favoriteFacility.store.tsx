@@ -4,15 +4,17 @@ import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 
 class FavoriteFacilityStore {
-    @observable favorites: FavouriteInfoDto[] = [];
+    @observable favorites: FavouriteInfoDto[] | undefined = undefined;
     @observable currentFavorites: FavouriteInfoDto | undefined = undefined;
 
     constructor() {
         makeAutoObservable(this);
     }
-
     @computed get isLoad() {
-        return this.favorites.length !== 0;
+        return this.favorites !== undefined;
+    }
+    @computed get isEmpty() {
+        return this.favorites && this.favorites.length !== 0;
     }
     @action
     public async addFavoriteFacility(id: string) {

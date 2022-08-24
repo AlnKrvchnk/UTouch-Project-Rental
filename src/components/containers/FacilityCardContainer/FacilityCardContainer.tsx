@@ -26,8 +26,8 @@ const FacilityCardContainer = ({
                 (item.facilityType === FacilityType.cottage && 'домов') ||
                 (item.facilityType === FacilityType.new && 'квартир')
             }`}
-            pricePerMeter={`от ${item.pricePerMeter} за м²`}
-            price={`от ${item.price}руб.`}
+            pricePerMeter={`от ${item.pricePerMeter.toLocaleString()} за м²`}
+            price={`от ${item.price.toLocaleString()}руб.`}
             isFavorite={item.isFavourite}
             itemCollection={() => itemCollection(item.id)}
             itemLike={() => {

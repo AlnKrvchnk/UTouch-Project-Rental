@@ -18,7 +18,7 @@ const FacilityDetailBox = ({
         <StyledFacilityDetailBox className={className}>
             {title && (
                 <Typography
-                    color={'common.back'}
+                    color={'common.black'}
                     variant={'h4'}
                     sx={{ paddingBottom: '16px' }}
                 >

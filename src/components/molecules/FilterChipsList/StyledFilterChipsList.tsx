@@ -9,7 +9,7 @@ export const StyledFilterChipsList = styled('div')(({ theme }) => ({
         width: 3,
     },
     '&::-webkit-scrollbar-track': {
-        background: theme.palette.background.default,
+        background: 'none',
         borderRadius: '3px',
     },
     '&::-webkit-scrollbar-thumb': {

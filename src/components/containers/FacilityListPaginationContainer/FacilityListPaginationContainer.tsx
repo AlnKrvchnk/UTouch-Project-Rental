@@ -33,16 +33,17 @@ const FacilityListPaginationContainer = () => {
         store.facility.getAllPag(actualFilter);
     };
     const handleItemLike = (id: string) => {
-        for (let index = 0; index < itemsList.length; index++) {
-            if (itemsList[index].id === id) {
-                console.log(itemsList[index].isFavourite);
-                itemsList[index].isFavourite
-                    ? store.favoriteFacility
-                          .removeFavoriteFacility(id)
-                          .then(() => updateitemList()) //<- это правильно?
-                    : store.favoriteFacility
-                          .addFavoriteFacility(id)
-                          .then(() => updateitemList());
+        if (itemsList) {
+            for (let index = 0; index < itemsList.length; index++) {
+                if (itemsList[index].id === id) {
+                    itemsList[index].isFavourite
+                        ? store.favoriteFacility
+                              .removeFavoriteFacility(id)
+                              .then(() => updateitemList())
+                        : store.favoriteFacility
+                              .addFavoriteFacility(id)
+                              .then(() => updateitemList());
+                }
             }
         }
     };

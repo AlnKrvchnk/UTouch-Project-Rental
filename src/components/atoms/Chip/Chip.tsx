@@ -6,9 +6,10 @@ interface Props extends StyledProps {
     removeChip?: () => void;
 }
 
-const Chip = ({ color, label, size, filter, removeChip }: Props) => {
+const Chip = ({ color, label, size, filter, removeChip, className }: Props) => {
     return (
         <StyledChip
+            className={className}
             color={color}
             title={String(label)}
             label={
