@@ -6,7 +6,12 @@ export default {
     component: EnterCode,
 } as ComponentMeta<typeof EnterCode>;
 
-const Template: ComponentStory<typeof EnterCode> = (arg) => <EnterCode {...arg}/>;
+const Template: ComponentStory<typeof EnterCode> = (arg) => (
+    <EnterCode {...arg} />
+);
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    values: ['', '', '', ''],
+    refs: [],
+};

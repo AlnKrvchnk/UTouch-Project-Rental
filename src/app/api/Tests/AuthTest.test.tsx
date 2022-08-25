@@ -64,7 +64,9 @@ describe('whoamiRequest', () => {
             name: 'Content Manager',
             role: 'MANAGER',
         };
+        console.log('h', localStorage.getItem('token'));
         return api.auth.whoami().then((actual) => {
+            console.log('h', localStorage.getItem('token'));
             expect(actual).toEqual(user);
         });
     });

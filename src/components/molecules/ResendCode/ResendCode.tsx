@@ -1,4 +1,4 @@
-import Timer from '@components/atoms/Timer/Timer';
+import TimerContainer from '@/components/containers/TimerContainer/TimerContainer';
 import Link from '@mui/material/Link';
 import { StyledResendCode } from './StyledResendCode';
 interface Props {
@@ -11,17 +11,16 @@ const ResendCode = ({ isWork, resendCode }: Props) => {
             <Link
                 underline="none"
                 variant="h6"
-                color="primary"
+                color="primary.main"
                 onClick={resendCode}
-                href="#!"
             >
                 Отправить код еще раз
             </Link>
-            <Timer
+            <TimerContainer
                 isWork={isWork}
                 timeInterval={300}
-                timeOver={resendCode}
-            ></Timer>
+                onTimeOver={resendCode}
+            ></TimerContainer>
         </StyledResendCode>
     );
 };

@@ -9,7 +9,7 @@ const EnterPhone = ({ handleChange, value }: Props) => {
         <StyledEnterPhone>
             <TextField
                 fullWidth
-                dashed
+                dashed={true}
                 onChange={(e) => handleChange(e.target.value)}
                 value={value}
                 variant={'outlined'}

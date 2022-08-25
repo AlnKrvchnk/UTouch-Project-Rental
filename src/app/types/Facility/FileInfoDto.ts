@@ -1,5 +1,5 @@
 export interface FileInfoDto {
     id: string;
-    fileName: string;
+    filename: string;
     path: string;
 }

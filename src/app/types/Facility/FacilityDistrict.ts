@@ -1,1 +1,4 @@
-export enum FacilityDistrict {}
+export enum FacilityDistrict {
+    arbat = 'Арбат',
+    basman = 'Басманный',
+}

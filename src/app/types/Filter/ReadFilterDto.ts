@@ -1,25 +1,36 @@
-import { FacilityBenefit } from '../Facility/FacilityBenefit';
-import { FacilityDistrict } from '../Facility/FacilityDistrict';
-import { FacilityFlatDecoration } from '../Facility/FacilityFlatDecoration';
-import { FacilityHouseClass } from '../Facility/FacilityHouseClass';
-import { FacilityMicroDistrict } from '../Facility/FacilityMicroDistrict';
-import { FacilityPaymentOption } from '../Facility/FacilityPaymentOption';
-import { FacilityRegistration } from '../Facility/FacilityRegistration';
-import { FacilityType } from '../Facility/FaculityType';
+import { DeliveryDateDto } from './DeliveryDateDto';
+import { RangeFilter } from './RangeFilter';
+
+export enum FilterTitle {
+    districts = 'Район',
+    microDistricts = 'Микрорайон ',
+    facilityTypes = 'Тип недвижимости',
+    benefits = 'Преимущества',
+    registrations = 'Оформление',
+    decorations = 'Отделка квартиры',
+    paymentOptions = 'Варианты оплаты',
+    houseClasses = 'Класс дома',
+    price = 'Цена',
+    pricePerMeter = 'Цена за метр',
+    square = 'Площадь',
+    deliveryDate = 'Срок сдачи',
+    distanceToTheBeach = 'Расстояние до моря',
+    deliveryDates = 'Сроки сдачи',
+}
 
 export interface ReadFilterDto {
-    districts?: FacilityDistrict[];
-    microDistricts?: FacilityMicroDistrict[];
-    facilityTypes?: FacilityType[];
-    benefits?: FacilityBenefit[];
-    registrations?: FacilityRegistration[];
-    decorations?: FacilityFlatDecoration[];
-    paymentOptions?: FacilityPaymentOption[];
-    houseClasses?: FacilityHouseClass[];
-    price?: number;
-    pricePerMeter?: number;
-    square?: number;
-    deliveryDate?: string;
-    distanceToTheBeach?: number;
-    deliveryDates?: string[];
+    districts?: string[];
+    microDistricts?: string[];
+    facilityTypes?: string[];
+    price?: RangeFilter;
+    pricePerMeter?: RangeFilter;
+    square?: RangeFilter;
+    registrations?: string[];
+    deliveryDate?: RangeFilter;
+    decorations?: string[];
+    paymentOptions?: string[];
+    houseClasses?: string[];
+    benefits?: string[];
+    distanceToTheBeach?: RangeFilter;
+    deliveryDates?: DeliveryDateDto[];
 }

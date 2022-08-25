@@ -16,6 +16,7 @@ const TextField = ({
     radius = 8,
     helperText,
     onChange,
+    onSubmit,
     onClick,
     InputProps,
     type,
@@ -25,9 +26,11 @@ const TextField = ({
     onKeyDown,
     value,
     disabled,
+    color,
 }: Props) => {
     return (
         <StyledTextField
+            color={color}
             id={id}
             label={label}
             variant={variant}
@@ -42,6 +45,7 @@ const TextField = ({
             InputProps={InputProps}
             type={type}
             onClick={onClick}
+            onSubmit={onSubmit}
             ref={ref}
             autoFocus={autoFocus}
             inputRef={inputRef}
