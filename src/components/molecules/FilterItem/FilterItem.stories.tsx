@@ -13,4 +13,7 @@ const Template: ComponentStory<typeof FilterItem> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
     title: 'Title',
+    isCheckbox: true,
+    value: ['item1', 'item'],
+    selectValue: ['item'],
 };

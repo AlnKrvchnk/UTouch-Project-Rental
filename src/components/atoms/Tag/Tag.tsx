@@ -1,4 +1,5 @@
 import { StyledTag } from './StyledTag';
+import clsx from 'clsx';
 interface Props {
     children: string;
     isActive: boolean;
@@ -6,7 +7,7 @@ interface Props {
 }
 const Tag = ({ children, onClick, isActive }: Props) => {
     return (
-        <StyledTag className={isActive ? 'active' : ''} onClick={onClick}>
+        <StyledTag className={clsx(isActive && 'active')} onClick={onClick}>
             {children}
         </StyledTag>
     );

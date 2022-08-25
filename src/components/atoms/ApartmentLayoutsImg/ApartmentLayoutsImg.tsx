@@ -1,15 +1,17 @@
+import { useImageUrl } from '@/hooks/useImageUrl';
 import { StyledApartmentLayoutsImg } from './StyledApartmentLayoutsImg';
 interface Props {
-    imgUrl: string;
-    showImg: () => void;
+    imageUrl: string;
+    onZoomImage: () => void;
 }
-const ApartmentLayoutsImg = ({ imgUrl, showImg }: Props) => {
+const ApartmentLayoutsImg = ({ imageUrl, onZoomImage }: Props) => {
+    const image = useImageUrl(imageUrl);
     return (
         <StyledApartmentLayoutsImg>
             <img
-                src={imgUrl}
-                onClick={showImg}
-                alt={''}
+                src={image}
+                onClick={onZoomImage}
+                alt={'Изображение не найдено'}
             />
         </StyledApartmentLayoutsImg>
     );

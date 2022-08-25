@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AppBarContainer = () => {
-    const [showMap, setShowMap] = useState<boolean>(false);
+    const [isShowMap, setShowMap] = useState<boolean>(false);
     const store = useAppContext();
     const navigate = useNavigate();
     const onSearch = (value: string | undefined) => {
@@ -15,11 +15,11 @@ const AppBarContainer = () => {
 
     return (
         <AppBar
-            setShowMap={() => setShowMap(!showMap)}
-            search={(value) => {
+            setShowMap={() => setShowMap(!isShowMap)}
+            onSearch={(value) => {
                 onSearch(value);
             }}
-            showMap={showMap}
+            isShowMap={isShowMap}
         />
     );
 };

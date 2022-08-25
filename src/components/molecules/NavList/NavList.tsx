@@ -1,8 +1,12 @@
 import NavItem from '@/components/atoms/NavItem/NavItem';
 import { Paths } from '@/routes/Paths';
 import { StyledNavList } from './StyledNavList';
+export interface Page {
+    link: Paths;
+    content: () => JSX.Element;
+}
 interface Props {
-    pages: { link: Paths; content: () => JSX.Element }[];
+    pages: Page[];
 }
 
 const NavList = ({ pages }: Props) => {

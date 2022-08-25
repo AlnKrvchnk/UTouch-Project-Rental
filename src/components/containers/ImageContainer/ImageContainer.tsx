@@ -1,15 +1,11 @@
-import { files } from '@/app/api/endpoints';
+import { useImageUrl } from '@/hooks/useImageUrl';
 
 interface Props {
-    src: string[];
+    src: string;
     title: string;
 }
 const ImageContainer = ({ src, title }: Props) => {
-    return (
-        <img
-            src={`${process.env.REACT_APP_API_URL}${files.getImage(src[0])}`}
-            alt={title}
-        />
-    );
+    const image = useImageUrl(src);
+    return <img src={image} alt={title} />;
 };
 export default ImageContainer;

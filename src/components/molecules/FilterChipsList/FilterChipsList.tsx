@@ -1,21 +1,26 @@
 import Chip from '@/components/atoms/Chip/Chip';
 import { StyledFilterChipsList } from './StyledFilterChipsList';
 
-interface Props {
-    items: { title: string; value: string }[];
-    removeItems: (title: string) => void;
+export interface Item {
+    title: string;
+    value: string;
 }
 
-const FilterChipsList = ({ items, removeItems }: Props) => {
+interface Props {
+    items: Array<Item>;
+    onRemoveItems: (title: string) => void;
+}
+
+const FilterChipsList = ({ items, onRemoveItems }: Props) => {
     return (
         <StyledFilterChipsList>
             {items.map((item) => (
                 <Chip
                     key={`${item.title}`}
                     label={`${item.title}: ${item.value}`}
-                    filter
+                    isFilter
                     color={'primary'}
-                    removeChip={() => removeItems(item.title)}
+                    removeChip={() => onRemoveItems(item.title)}
                 ></Chip>
             ))}
         </StyledFilterChipsList>

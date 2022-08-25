@@ -78,14 +78,14 @@ export const RemoveIcon = (props: SvgIconProps) => {
         </SvgIcon>
     );
 };
-export const ExistOption = (props: SvgIconProps) => {
+export const ExistOptionIcon = (props: SvgIconProps) => {
     return (
         <SvgIcon {...props} fontSize="inherit" viewBox={'0 0 34 34'}>
             <path d="M16.9999 33.6668C7.79492 33.6668 0.333252 26.2052 0.333252 17.0002C0.333252 7.79516 7.79492 0.333496 16.9999 0.333496C26.2049 0.333496 33.6666 7.79516 33.6666 17.0002C33.6666 26.2052 26.2049 33.6668 16.9999 33.6668ZM16.9999 9.9285L9.92825 17.0002L16.9999 24.0718L24.0716 17.0002L16.9999 9.9285Z" />
         </SvgIcon>
     );
 };
-export const NotExistOption = (props: SvgIconProps) => {
+export const NotExistOptionIcon = (props: SvgIconProps) => {
     return (
         <SvgIcon {...props} fontSize="inherit" viewBox={'0 0 34 34'}>
             <path d="M16.9999 33.6668C7.79492 33.6668 0.333252 26.2052 0.333252 17.0002C0.333252 7.79516 7.79492 0.333496 16.9999 0.333496C26.2049 0.333496 33.6666 7.79516 33.6666 17.0002C33.6666 26.2052 26.2049 33.6668 16.9999 33.6668ZM16.9999 14.6435L12.2866 9.9285L9.92825 12.2868L14.6433 17.0002L9.92825 21.7135L12.2866 24.0718L16.9999 19.3568L21.7133 24.0718L24.0716 21.7135L19.3566 17.0002L24.0716 12.2868L21.7133 9.9285L16.9999 14.6435Z" />
@@ -114,6 +114,13 @@ export const ArrowNextIcon = (props: SvgIconProps) => {
     return (
         <SvgIcon {...props} fontSize="inherit" viewBox={'0 0 16 16'}>
             <path d="M12.172 8.99983L5.92552e-07 8.99983L7.67397e-07 6.99983L12.172 6.99983L6.808 1.63583L8.222 0.221832L16 7.99983L8.222 15.7778L6.808 14.3638L12.172 8.99983Z" />
+        </SvgIcon>
+    );
+};
+export const CloseIcon = (props: SvgIconProps) => {
+    return (
+        <SvgIcon {...props} fontSize="inherit" viewBox={'0 0 24 24'}>
+            <path d="M11.9998 9.52578L20.6623 0.863281L23.1368 3.33778L14.4743 12.0003L23.1368 20.6628L20.6623 23.1373L11.9998 14.4748L3.33729 23.1373L0.862793 20.6628L9.52529 12.0003L0.862793 3.33778L3.33729 0.863281L11.9998 9.52578Z" />
         </SvgIcon>
     );
 };

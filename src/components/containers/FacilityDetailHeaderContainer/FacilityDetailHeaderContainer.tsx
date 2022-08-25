@@ -1,47 +1,35 @@
 import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
-import { FacilityType } from '@/app/types/Facility/FaculityType';
 import FacilityDetailHeader from '@/components/organisms/FacilityDetailHeader/FacilityDetailHeader';
+import { useFacilityTypeCount } from '@/hooks/useFacilityTypeCount';
+import { useLocaleString } from '@/hooks/useLocaleString';
+// eslint-disable-next-line max-len
+import PseudoFacilityDetailHeader from '@components/organisms/PseudoFacilityDetailHeader/PseudoFacilityDetailHeader';
 interface Props {
     facility?: FacilityInfoDto;
 }
 const FacilityDetailHeaderContainer = ({ facility }: Props) => {
-    return (
+    const { count, type } = useFacilityTypeCount(facility);
+    const priceFormat = useLocaleString(facility?.price);
+    const minPriceFormat = useLocaleString(facility?.minPrice);
+    const squareFormat = useLocaleString(facility?.square);
+
+    return facility ? (
         <FacilityDetailHeader
-            images={facility ? facility.photoNames : []}
-            isDelivered={facility ? facility.isDelivered : false}
-            price={facility ? facility.price.toLocaleString() : 'Не известно'}
-            minPrice={
-                facility ? facility.minPrice.toLocaleString() : 'Не известно'
-            }
-            square={facility ? facility.square.toLocaleString() : 'Не известно'}
-            facilityType={
-                facility
-                    ? (facility.facilityType === FacilityType.apartments &&
-                          'Комнаты') ||
-                      (facility.facilityType === FacilityType.cottage &&
-                          'Дома') ||
-                      (facility.facilityType === FacilityType.new &&
-                          'Квартиры') ||
-                      'Не известно'
-                    : 'Не известно'
-            }
-            facilityCount={
-                facility
-                    ? (facility.facilityType === FacilityType.apartments &&
-                          `${facility.roomsCount}`) ||
-                      (facility.facilityType === FacilityType.cottage &&
-                          `${facility.cottageCount}`) ||
-                      (facility.facilityType === FacilityType.new &&
-                          `${facility.flatsCount}`) ||
-                      'Не известно'
-                    : 'Не известно'
-            }
-            city={facility ? facility.city : 'Не известно'}
-            address={facility ? facility.address : 'Не известно'}
-            district={facility ? facility.district : 'Не известно'}
-            building={facility ? facility.building : 'Не известно'}
-            microDistrict={facility ? facility.microDistrict : 'Не известно'}
+            images={facility.photoNames}
+            isDelivered={facility.isDelivered}
+            price={priceFormat}
+            minPrice={minPriceFormat}
+            square={squareFormat}
+            facilityType={type}
+            facilityCount={count || '0'}
+            city={facility.city}
+            address={facility.address}
+            district={facility.district}
+            building={facility.building}
+            microDistrict={facility.microDistrict}
         />
+    ) : (
+        <PseudoFacilityDetailHeader />
     );
 };
 export default FacilityDetailHeaderContainer;

@@ -1,5 +1,4 @@
 import { FacilityRegistration } from '@/app/types/Facility/FacilityRegistration';
-// import ImageContainer from '@/components/containers/ImageContainer/ImageContainer';
 import FacilityInformChips from '@components/molecules/FacilityInformChips/FacilityInformChips';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
@@ -10,26 +9,24 @@ const ImageContainer = lazy(
     () => import('@/components/containers/ImageContainer/ImageContainer')
 );
 interface Props {
-    id: string;
     title: string;
     isDelivered: boolean;
     registrations: FacilityRegistration[];
     address: string;
-    cottageCount: string;
+    count: string;
     pricePerMeter: string;
-    image: string[];
+    imageUrl: string;
     price: string;
     onDetail: () => void;
 }
 
 const FacilityInform = ({
-    id,
     title,
     isDelivered,
     registrations,
     address,
-    cottageCount,
-    image,
+    count,
+    imageUrl,
     pricePerMeter,
     price,
     onDetail,
@@ -46,7 +43,7 @@ const FacilityInform = ({
                         />
                     }
                 >
-                    <ImageContainer src={image} title={title} />
+                    <ImageContainer src={imageUrl} title={title} />
                 </Suspense>
             </div>
             <div className="inform">
@@ -65,7 +62,7 @@ const FacilityInform = ({
                     />
                     <FacilityInformDetail
                         address={address}
-                        cottageCount={cottageCount}
+                        count={count}
                         pricePerMeter={pricePerMeter}
                     />
                 </div>

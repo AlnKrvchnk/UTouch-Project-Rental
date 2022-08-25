@@ -25,7 +25,7 @@ const FacilityDetailHeader = ({
     return (
         <StyledFacilityDetailHeader>
             <FacilityCarouselBoxContainer
-                images={images}
+                imagesUrl={images}
                 isDelivered={isDelivered}
             />
             <FacilityBriefInformationBox

@@ -3,14 +3,10 @@ import { Typography } from '@mui/material';
 import { StyledFacilityInformDetail } from './StyledFacilityInformDetail';
 interface Props {
     address: string;
-    cottageCount: string;
+    count: string;
     pricePerMeter: string;
 }
-const FacilityInformDetail = ({
-    address,
-    cottageCount,
-    pricePerMeter,
-}: Props) => {
+const FacilityInformDetail = ({ address, count, pricePerMeter }: Props) => {
     return (
         <StyledFacilityInformDetail>
             <Typography variant={'body2'} color={'text.disabled'}>
@@ -23,7 +19,7 @@ const FacilityInformDetail = ({
                 <Typography color={'grey.900'} sx={{ marginRight: '8px' }}>
                     <DotsIcon />
                 </Typography>
-                {cottageCount}, {pricePerMeter}
+                {count}, {pricePerMeter}
             </Typography>
         </StyledFacilityInformDetail>
     );

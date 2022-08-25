@@ -2,22 +2,24 @@ import Chip, { ChipProps } from '@mui/material/Chip';
 import { styled } from '@mui/material/styles';
 
 export interface Props extends ChipProps {
-    filter?: boolean;
+    isFilter?: boolean;
 }
 
-export const StyledChip = styled(Chip)<Props>(({ theme, filter }) => ({
-    borderRadius: filter ? 16 : 4,
-    maxWidth: filter ? 'auto' : '100px',
-    backdropFilter: filter ? 'none' : 'blur(19px)',
-    padding: filter ? '4px 6px 4px 12px' : '16px 8px',
-    fontWeight: filter ? '500' : '700',
-    fontSize: filter ? 13 : 14,
-    margin: filter ? '8px auto' : '',
+export const StyledChip = styled(Chip)<Props>(({ theme, isFilter }) => ({
+    borderRadius: isFilter ? 16 : 4,
+    maxWidth: isFilter ? 'auto' : '100px',
+    backdropFilter: isFilter ? 'none' : 'blur(19px)',
+    padding: isFilter ? '4px 6px 4px 12px' : '16px 8px',
+    fontWeight: isFilter ? '500' : '700',
+    fontSize: isFilter ? 13 : 14,
+    margin: isFilter ? '8px auto' : '',
     '&:not(:last-of-type)': {
         marginRight: 8,
     },
     '&>*': {
         padding: '0!important',
+        alignItems: 'center',
+        display: 'flex',
     },
     '& button': {
         width: 20,

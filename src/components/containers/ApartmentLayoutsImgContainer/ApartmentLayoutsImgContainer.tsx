@@ -1,38 +1,41 @@
-import { files } from '@/app/api/endpoints';
 import ApartmentLayoutsImgBox from '@/components/organisms/ApartmentLayoutsImgBox/ApartmentLayoutsImgBox';
 import ApartmentLayoutsImg from '@components/atoms/ApartmentLayoutsImg/ApartmentLayoutsImg';
-import { useState } from 'react';
+import { Grid } from '@mui/material';
+import { useMemo, useState } from 'react';
 interface Props {
     imgsUrl: string[];
 }
 const ApartmentLayoutsImgContainer = ({ imgsUrl }: Props) => {
-    const [show, setShow] = useState<boolean>(false);
-    const [showImg, setShowImg] = useState<string>('');
+    const [zoomImgUrl, setZoomImgUrl] = useState<string | undefined>();
 
+    const isZoomImage = useMemo(() => {
+        return zoomImgUrl !== undefined;
+    }, [zoomImgUrl]);
     return (
-        <>
+        <Grid
+            container
+            sx={{
+                gridColumnGap: '16px',
+                gridRowGap: '16px',
+            }}
+        >
             {imgsUrl.map((img) => (
                 <ApartmentLayoutsImg
                     key={img}
-                    imgUrl={`${process.env.REACT_APP_API_URL}${files.getImage(
-                        img
-                    )}`}
-                    showImg={() => {
-                        setShowImg(img);
-                        setShow(true);
+                    imageUrl={img}
+                    onZoomImage={() => {
+                        setZoomImgUrl(img);
                     }}
                 />
             ))}
             <ApartmentLayoutsImgBox
-                imgUrl={`${process.env.REACT_APP_API_URL}${files.getImage(
-                    showImg
-                )}`}
+                imgUrl={zoomImgUrl}
                 onClose={() => {
-                    setShow(false);
+                    setZoomImgUrl(undefined);
                 }}
-                show={show}
+                isShow={isZoomImage}
             />
-        </>
+        </Grid>
     );
 };
 export default ApartmentLayoutsImgContainer;

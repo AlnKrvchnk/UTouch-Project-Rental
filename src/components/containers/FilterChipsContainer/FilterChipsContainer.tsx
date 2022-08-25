@@ -1,5 +1,7 @@
 import { FilterTitle } from '@/app/types/Filter/ReadFilterDto';
-import FilterChipsList from '@/components/molecules/FilterChipsList/FilterChipsList';
+import FilterChipsList, {
+    Item as Filter,
+} from '@/components/molecules/FilterChipsList/FilterChipsList';
 import { useAppContext } from '@/contexts/StoreContext';
 import { observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
@@ -7,9 +9,7 @@ import { useEffect, useState } from 'react';
 const FilterChipsContainer = () => {
     const store = useAppContext();
     const filters = store.filter.selectFilter;
-    const [formatFilters, setFormatFilters] = useState<
-        { title: string; value: string }[]
-    >([]);
+    const [formatFilters, setFormatFilters] = useState<Filter[]>([]);
 
     useEffect(() => {
         const tmp = [];
@@ -23,11 +23,6 @@ const FilterChipsContainer = () => {
                 title: FilterTitle.decorations,
                 value: filters.decorations.join(', '),
             });
-        // if (filters.deliveryDate)
-        // tmp.push({
-        //     title: FilterTitle.decorations,
-        //     value: filters.decorations.join(', '),
-        // });
         if (filters.deliveryDates)
             tmp.push({
                 title: FilterTitle.deliveryDates,
@@ -89,13 +84,17 @@ const FilterChipsContainer = () => {
                 value: `от ${filters.square.min.toLocaleString()} м² 
                 до ${filters.square.max.toLocaleString()} м²`,
             });
-
         setFormatFilters(tmp);
     }, [filters]);
 
-    const removeItems = (key: string) => {
+    const handleRemoveItems = (key: string) => {
         store.filter.removeFilter(key);
     };
-    return <FilterChipsList items={formatFilters} removeItems={removeItems} />;
+    return (
+        <FilterChipsList
+            items={formatFilters}
+            onRemoveItems={handleRemoveItems}
+        />
+    );
 };
 export default observer(FilterChipsContainer);

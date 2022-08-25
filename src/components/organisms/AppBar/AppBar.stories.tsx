@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 import AppBar from './AppBar';
 
 export default {
@@ -6,7 +7,11 @@ export default {
     component: AppBar,
 } as ComponentMeta<typeof AppBar>;
 
-const Template: ComponentStory<typeof AppBar> = (args) => <AppBar {...args} />;
+const Template: ComponentStory<typeof AppBar> = (args) => (
+    <BrowserRouter>
+        <AppBar {...args} />
+    </BrowserRouter>
+);
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = { isShowMap: true };

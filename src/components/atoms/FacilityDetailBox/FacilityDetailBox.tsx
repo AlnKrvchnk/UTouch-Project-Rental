@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import { StyledFacilityDetailBox } from './StyledFacilityDetailBox';
 
 interface Props {
-    title?: string;
+    title?: string | JSX.Element;
     textContent?: string;
     elementContent?: JSX.Element;
     className: string;

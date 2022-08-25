@@ -1,7 +1,11 @@
 import { Map as MapComponent, Placemark, YMaps } from 'react-yandex-maps';
 import { Props as StyledProps, StyledMap } from './StyledMap';
+export interface Placemark {
+    title: string;
+    marks: number[];
+}
 interface Props extends StyledProps {
-    placemarks: { title: string; marks: number[] }[];
+    placemarks: Placemark[];
 }
 
 const Map = ({ placemarks, display, width, height }: Props) => (

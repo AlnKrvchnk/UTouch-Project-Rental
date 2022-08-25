@@ -1,5 +1,6 @@
+import { Paths } from '@/routes/Paths';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import { BrowserRouter } from 'react-router-dom';
 import NavList from './NavList';
 
 export default {
@@ -8,8 +9,12 @@ export default {
 } as ComponentMeta<typeof NavList>;
 
 const Template: ComponentStory<typeof NavList> = (args) => (
-    <NavList {...args} />
+    <BrowserRouter>
+        <NavList {...args} />
+    </BrowserRouter>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    pages: [{ link: Paths.Catalog, content: () => <span>Page</span> }],
+};

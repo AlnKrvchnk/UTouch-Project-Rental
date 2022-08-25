@@ -9,11 +9,15 @@ const DocumentsItem = ({ path, fileName }: Props) => {
         <Link
             href={path}
             underline="none"
-            sx={{ display: 'flex', alignItems: 'center' }}
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                paddingBottom: '16px',
+            }}
         >
             <Typography
                 color={'primary'}
-                sx={{ marginRight: '16px', fontSize: '40px' }}
+                sx={{ marginRight: '16px', fontSize: '40px', lineHeight: '0' }}
             >
                 <FileIcon />
             </Typography>

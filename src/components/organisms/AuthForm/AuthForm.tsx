@@ -11,29 +11,29 @@ import { StyledAuthForm } from './StyledAuthForm';
 interface Props {
     error?: string;
     isCodeDisplay: boolean;
-    timerIsWork: boolean;
+    isTimerWork: boolean;
 
     setPhone: (value: string) => void;
     setCode: (value: string) => void;
     setError: (value: string) => void;
-    submitForm: () => void;
-    resendCode: () => void;
+    onSubmitForm: () => void;
+    onResendCode: () => void;
 }
 
 const AuthForm = ({
     error,
     isCodeDisplay,
-    timerIsWork,
+    isTimerWork,
     setPhone,
     setCode,
-    submitForm,
+    onSubmitForm,
     setError,
-    resendCode,
+    onResendCode,
 }: Props) => {
     return (
         <div>
             {error && <ErrorBox>{error}</ErrorBox>}
-            <StyledAuthForm onSubmit={submitForm}>
+            <StyledAuthForm>
                 <Typography align={'center'}>
                     <Logo />
                 </Typography>
@@ -52,14 +52,16 @@ const AuthForm = ({
                     Контент Менеджер
                 </Typography>
                 <EnterPhoneContainer
-                    valueEntered={setPhone}
+                    onValueEntered={setPhone}
                     setError={setError}
                 />
-                {isCodeDisplay && <EnterCodeContainer valueEntered={setCode} />}
+                {isCodeDisplay && (
+                    <EnterCodeContainer onValueEntered={setCode} />
+                )}
                 <Button
                     fullWidth
                     size={'large'}
-                    onClick={submitForm}
+                    onClick={onSubmitForm}
                     fw={600}
                     fs={15}
                 >
@@ -68,8 +70,8 @@ const AuthForm = ({
                 {isCodeDisplay && <hr />}
                 {isCodeDisplay && (
                     <ResendCode
-                        isWork={isCodeDisplay && timerIsWork}
-                        resendCode={resendCode}
+                        isWork={isCodeDisplay && isTimerWork}
+                        resendCode={onResendCode}
                     ></ResendCode>
                 )}
             </StyledAuthForm>

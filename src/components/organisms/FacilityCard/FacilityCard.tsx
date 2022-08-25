@@ -4,54 +4,54 @@ import FacilityInform from '@components/molecules/FacilityInform/FacilityInform'
 import { StyledFacilityCard } from './StyledFacilityCard';
 
 interface Props {
-    id: string;
     title: string;
     isDelivered: boolean;
     registrations: FacilityRegistration[];
     address: string;
-    cottageCount: string;
+    count: string;
     pricePerMeter: string;
     price: string;
     isFavorite: boolean;
-    image: string[];
-    itemCollection: () => void;
-    itemLike: () => void;
-    itemDetail: () => void;
+    imageUrl: string;
+    isCollection: boolean;
+    onItemCollection: () => void;
+    onItemLike: () => void;
+    onItemDetail: () => void;
 }
 
 const FacilityCard = ({
-    id,
     title,
     isDelivered,
     registrations,
     address,
-    cottageCount,
+    count,
     pricePerMeter,
     price,
     isFavorite,
-    image,
-    itemCollection,
-    itemLike,
-    itemDetail,
+    imageUrl,
+    isCollection,
+    onItemCollection,
+
+    onItemLike,
+    onItemDetail,
 }: Props) => {
     return (
         <StyledFacilityCard>
             <FacilityInform
-                id={id}
                 title={title}
                 isDelivered={isDelivered}
                 registrations={registrations}
                 address={address}
-                cottageCount={cottageCount}
+                count={count}
                 pricePerMeter={pricePerMeter}
                 price={price}
-                image={image}
-                onDetail={itemDetail}
+                imageUrl={imageUrl}
+                onDetail={onItemDetail}
             />
             <FacilityCardControl
-                onCollection={itemCollection}
-                onLike={itemLike}
-                isCollection={false}
+                onCollection={onItemCollection}
+                onLike={onItemLike}
+                isCollection={isCollection}
                 isFavorite={isFavorite}
             />
         </StyledFacilityCard>

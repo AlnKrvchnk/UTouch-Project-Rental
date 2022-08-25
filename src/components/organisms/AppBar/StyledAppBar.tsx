@@ -1,5 +1,12 @@
 import { styled } from '@mui/material/styles';
-
+export const StyledBox = styled('div')(({ theme }) => ({
+    display: 'flex',
+    paddingTop: '32px',
+    paddingBottom: '32px',
+    '& >*:first-child': {
+        marginRight: 10,
+    },
+}));
 export const StyledAppBar = styled('div')(({ theme }) => ({
     position: 'sticky',
     top: 0,

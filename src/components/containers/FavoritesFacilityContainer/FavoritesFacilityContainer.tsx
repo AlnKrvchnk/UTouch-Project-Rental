@@ -1,3 +1,4 @@
+import PseudoFacilityCard from '@/components/organisms/PseudoFacilityCard/PseudoFacilityCard';
 import { useAppContext } from '@/contexts/StoreContext';
 import { Paths } from '@/routes/Paths';
 import { toJS } from 'mobx';
@@ -8,11 +9,8 @@ import FacilityListContainer from '../FacilityListContainer/FacilityListContaine
 
 const FavoritesFacilityContainer = () => {
     const store = useAppContext();
-    const isLoad = store.favoriteFacility.isLoad;
     const favorites = store.favoriteFacility.favorites;
-
     const navigate = useNavigate();
-
     const handleItemLike = (id: string) => {
         store.favoriteFacility
             .removeFavoriteFacility(id)
@@ -28,15 +26,15 @@ const FavoritesFacilityContainer = () => {
         store.favoriteFacility.getFavoriteFacility();
     }, []);
 
-    return (
+    return favorites ? (
         <FacilityListContainer
-            itemsList={
-                favorites && toJS(favorites).map((item) => item.facility)
-            }
+            itemsList={toJS(favorites).map((item) => item.facility)}
             onItemLike={(id) => handleItemLike(id)}
             onItemCollection={(id) => handleItemLike(id)}
             onItemDetail={(id) => handleItemDetail(id)}
         />
+    ) : (
+        <PseudoFacilityCard />
     );
 };
 export default observer(FavoritesFacilityContainer);

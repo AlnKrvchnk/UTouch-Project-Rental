@@ -22,15 +22,17 @@ const TagListContainer = () => {
     useEffect(() => {
         if (activeTag !== undefined) {
             navigate(`${Paths.Catalog}`, { replace: true });
-            store.filter.setCategory(activeTag as FacilityCategory);
         }
+        store.filter.setCategory(activeTag as FacilityCategory);
     }, [activeTag]);
     return (
         <TagList
             items={items}
             activeItem={activeTag}
             onClick={(item) => {
-                setActiveTag(item);
+                item === activeTag
+                    ? setActiveTag(undefined)
+                    : setActiveTag(item);
             }}
         />
     );

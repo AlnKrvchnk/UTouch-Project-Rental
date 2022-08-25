@@ -3,8 +3,19 @@ import FacilityDetailContent from '@/components/organisms/FacilityDetailContent/
 interface Props {
     facility?: FacilityInfoDto;
     onItemlike: () => void;
+    onItemCollection: () => void;
 }
-const FacilityDetailContentContainer = ({ facility, onItemlike }: Props) => {
-    return <FacilityDetailContent item={facility} onItemLike={onItemlike} />;
+const FacilityDetailContentContainer = ({
+    facility,
+    onItemlike,
+    onItemCollection,
+}: Props) => {
+    return (
+        <FacilityDetailContent
+            item={facility}
+            onItemLike={onItemlike}
+            onItemCollection={onItemCollection}
+        />
+    );
 };
 export default FacilityDetailContentContainer;

@@ -5,8 +5,8 @@ import { StyledSelect } from './StyledSelect';
 interface Props {
     items: string[];
     selectItem: string | undefined;
-    setSelectItem: (item: string) => void;
     title: string;
+    setSelectItem: (item: string) => void;
 }
 const Select = ({ selectItem, items, title, setSelectItem }: Props) => {
     return (

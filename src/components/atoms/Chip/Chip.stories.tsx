@@ -12,4 +12,5 @@ export const Default = Template.bind({});
 Default.args = {
     label: 'Chip',
     color: 'primary',
+    isFilter: true,
 };

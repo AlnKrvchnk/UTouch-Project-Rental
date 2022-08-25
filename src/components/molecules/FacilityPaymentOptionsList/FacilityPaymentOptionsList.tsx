@@ -1,5 +1,8 @@
 import { FacilityPaymentOption } from '@/app/types/Facility/FacilityPaymentOption';
-import { ExistOption, NotExistOption } from '@/components/atoms/Icons/Icons';
+import {
+    ExistOptionIcon,
+    NotExistOptionIcon,
+} from '@/components/atoms/Icons/Icons';
 import { Grid, List, ListItem, Typography } from '@mui/material';
 
 interface Props {
@@ -21,14 +24,15 @@ const FacilityPaymentOptionsList = ({
                                 color={'primary.main'}
                                 sx={{ marginRight: '24px', fontSize: '24px' }}
                             >
-                                <ExistOption />
+                                <ExistOptionIcon />
                             </Typography>
                             <Typography
                                 color={'common.back'}
                                 sx={{ fontWeight: '500', fontSize: '18px' }}
                             >
                                 {option}
-                                {option === 'Рассрочка' && (
+                                {option ===
+                                    FacilityPaymentOption.installmentPlan && (
                                     <List sx={{ margin: '0' }}>
                                         {installmentPlanOptions.map(
                                             (option) => (
@@ -66,7 +70,7 @@ const FacilityPaymentOptionsList = ({
                                             fontSize: '24px',
                                         }}
                                     >
-                                        <NotExistOption />
+                                        <NotExistOptionIcon />
                                     </Typography>
                                     <Typography
                                         color={'common.back'}

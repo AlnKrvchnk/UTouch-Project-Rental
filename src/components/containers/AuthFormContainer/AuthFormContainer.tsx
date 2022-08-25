@@ -9,22 +9,20 @@ const AuthFormContainer = () => {
     const storeError = store.auth.error;
     const [phone, setPhone] = useState<string>('');
     const [code, setCode] = useState<string>('');
-    const [timerIsWork, setTimerWork] = useState<boolean>(isPhoneSend);
+    const [isTimerWork, setTimerWork] = useState<boolean>(isPhoneSend);
     const [error, setError] = useState<string | undefined>('');
 
     useEffect(() => {
         setError(storeError);
     }, [storeError]);
-    const submitForm = () => {
+    const onSubmitForm = () => {
         isPhoneSend
             ? store.auth.login({ phone, code })
             : store.auth.getCode({ phone });
     };
-    const resendCode = () => {
+    const onResendCode = () => {
         setTimerWork(false);
-        console.log('resendCode')
-        // store.auth.getCode({ phone });
-        setTimerWork(true);
+        store.auth.getCode({ phone }).then(() => setTimerWork(true));
     };
 
     return (
@@ -32,11 +30,11 @@ const AuthFormContainer = () => {
             error={error}
             setPhone={(value) => setPhone(value)}
             setCode={(value) => setCode(value)}
-            submitForm={submitForm}
+            onSubmitForm={onSubmitForm}
             setError={(value) => setError(value)}
             isCodeDisplay={isPhoneSend}
-            timerIsWork={timerIsWork}
-            resendCode={resendCode}
+            isTimerWork={isTimerWork}
+            onResendCode={onResendCode}
         />
     );
 };

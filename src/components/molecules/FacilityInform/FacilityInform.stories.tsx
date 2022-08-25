@@ -11,4 +11,13 @@ const Template: ComponentStory<typeof FacilityInform> = (arg) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    title: 'Title',
+    isDelivered: true,
+    registrations: [],
+    address: 'Address',
+    count: '5',
+    imageUrl: '09a8db7e54f7.jpeg',
+    pricePerMeter: '000 00',
+    price: '000 000',
+};

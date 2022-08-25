@@ -36,12 +36,16 @@ const FacilityDetail: FC<Props> = () => {
                       });
         }
     };
+    const handleItemCollection = () => {
+        console.log();
+    };
     return (
         <>
             <FacilityDetailHeaderContainer facility={facility} />
             <FacilityDetailContentContainer
                 facility={facility}
                 onItemlike={handleItemLike}
+                onItemCollection={handleItemCollection}
             />
         </>
     );

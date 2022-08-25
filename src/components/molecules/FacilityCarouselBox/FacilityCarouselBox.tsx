@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Chip from '@/components/atoms/Chip/Chip';
 import { ArrowNextIcon, ArrowPrevIcon } from '@components/atoms/Icons/Icons';
 import Button from '@mui/material/Button';

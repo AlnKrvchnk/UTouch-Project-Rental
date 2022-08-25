@@ -9,13 +9,8 @@ export default {
 
 const Template: ComponentStory<typeof Timer> = (args) => <Timer {...args} />;
 
-let isTicking = false;
-
 export const Default = Template.bind({});
 Default.args = {
-    isWork: isTicking,
-    timeInterval: 100,
-    timeOver: () => {
-        isTicking = false;
-    },
+    minutes: '00',
+    seconds: '00',
 };

@@ -1,24 +1,19 @@
-import { files } from '@/app/api/endpoints';
+import { useImageUrl } from '@/hooks/useImageUrl';
 import Typography from '@mui/material/Typography';
 import { StyledDeveloperInformSmallCard } from './StyledDeveloperInformSmallCard';
-
 interface Props {
-    developerAvatar: string;
+    developerAvatarUrl: string;
     developerName: string;
 }
 const DeveloperInformSmallCard = ({
-    developerAvatar,
+    developerAvatarUrl,
     developerName,
 }: Props) => {
+    const developerAvatarImage = useImageUrl(developerAvatarUrl);
     return (
         <StyledDeveloperInformSmallCard>
             <div className={'imgContainer'}>
-                <img
-                    src={`${process.env.REACT_APP_API_URL}${files.getImage(
-                        developerAvatar
-                    )}`}
-                    alt={developerName}
-                />
+                <img src={developerAvatarImage} alt={developerName} />
             </div>
             <Typography
                 align={'center'}

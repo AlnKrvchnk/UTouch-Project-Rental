@@ -18,7 +18,7 @@ export const StyledFacilityDetailContent = styled('div')(({ theme }) => ({
     '.general': { gridColumn: 'span 10' },
     '.description': { gridColumn: 'span 10' },
     '.sales': { gridColumn: 'span 4' },
-    '.commission': { gridColumn: 'span 6' },
+    '.commissions': { gridColumn: 'span 6' },
     '.payment': { gridColumn: 'span 10' },
     '.documentation': { gridColumn: 'span 10' },
     '.layout': { gridColumn: 'span 5' },

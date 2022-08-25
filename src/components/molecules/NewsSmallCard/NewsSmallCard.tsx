@@ -1,4 +1,4 @@
-import { files } from '@/app/api/endpoints';
+import { useImageUrl } from '@/hooks/useImageUrl';
 import Typography from '@mui/material/Typography';
 import { StyledNewsSmallCard } from './StyledNewsSmallCard';
 interface Props {
@@ -6,12 +6,9 @@ interface Props {
     title: string;
 }
 const NewsSmallCard = ({ imgUrl, title }: Props) => {
+    const image = useImageUrl(imgUrl);
     return (
-        <StyledNewsSmallCard
-            backgroundImage={`${process.env.REACT_APP_API_URL}${files.getImage(
-                imgUrl
-            )}`}
-        >
+        <StyledNewsSmallCard backgroundImage={image}>
             <Typography
                 color={'common.white'}
                 sx={{ wontSize: '18px', fontWeight: '700' }}

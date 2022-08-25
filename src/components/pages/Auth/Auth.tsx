@@ -1,4 +1,4 @@
-import AuthFormContainer from '../../containers/AuthFormContainer/AuthFormContainer';
+import AuthFormContainer from '@components/containers/AuthFormContainer/AuthFormContainer';
 import { StyledAuth } from './StyledAuth';
 const AuthPage = () => {
     return (

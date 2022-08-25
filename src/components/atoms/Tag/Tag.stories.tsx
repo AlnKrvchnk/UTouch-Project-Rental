@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import Tag from './Tag';
 
 export default {
@@ -10,4 +9,7 @@ export default {
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    children: 'Tag',
+    isActive: true,
+};

@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-export const StyledAuthForm = styled('form')(({ theme }) => ({
+export const StyledAuthForm = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     padding: 32,

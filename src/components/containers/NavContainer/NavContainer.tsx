@@ -6,7 +6,7 @@ import {
 } from '@/components/atoms/Icons/Icons';
 import Logo from '@/components/atoms/Logo/Logo';
 import NavItem from '@/components/atoms/NavItem/NavItem';
-import NavList from '@/components/molecules/NavList/NavList';
+import NavList, { Page } from '@/components/molecules/NavList/NavList';
 import { Paths } from '@/routes/Paths';
 import { StyledNavContainer } from './StyledNavContainer';
 
@@ -44,7 +44,7 @@ const User = () => {
 };
 
 const NavContainer = () => {
-    const pages: { link: Paths; content: () => JSX.Element }[] = [
+    const pages: Page[] = [
         { link: Paths.News, content: News },
         { link: Paths.Collections, content: Collections },
         { link: Paths.Favorites, content: Favorites },

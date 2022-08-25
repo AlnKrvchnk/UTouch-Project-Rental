@@ -1,26 +1,32 @@
+import Button from '@/components/atoms/Button/Button';
+import { MapIcon } from '@/components/atoms/Icons/Icons';
 import MapContainer from '@components/containers/MapContainer/MapContainer';
 import NavContainer from '@components/containers/NavContainer/NavContainer';
 import SearchContainer from '@components/containers/SearchContainer/SearchContainer';
 import TagListContainer from '@components/containers/TagListContainer/TagListContainer';
-import { StyledAppBar } from './StyledAppBar';
+import { StyledAppBar, StyledBox } from './StyledAppBar';
 interface Props {
     setShowMap: () => void;
-    showMap: boolean;
-    search: (value: string | undefined) => void;
+    isShowMap: boolean;
+    onSearch: (value: string | undefined) => void;
 }
-const AppBar = ({ search, setShowMap, showMap }: Props) => {
+const AppBar = ({ onSearch, setShowMap, isShowMap }: Props) => {
     return (
         <>
             <StyledAppBar>
                 <NavContainer />
-                <SearchContainer
-                    onShowMap={setShowMap}
-                    search={search}
-                    showMap={showMap}
-                />
+                <StyledBox>
+                    <Button
+                        onClick={setShowMap}
+                        variant={isShowMap ? 'contained' : 'outlined'}
+                    >
+                        <MapIcon />
+                    </Button>
+                    <SearchContainer onSearch={onSearch} />
+                </StyledBox>
                 <TagListContainer />
             </StyledAppBar>
-            <MapContainer display={showMap} />
+            <MapContainer isShow={isShowMap} />
         </>
     );
 };

@@ -2,7 +2,7 @@
 .storybook
 .gitignore
 
-
+/build
 /dist
 
 npm-debug.log*

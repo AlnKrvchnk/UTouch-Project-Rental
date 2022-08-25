@@ -5,18 +5,18 @@ interface Props {
     setPage: (page: number) => void;
 }
 const PaginationContainer = ({ pageCount, page, setPage }: Props) => {
-    const prevPage = () => {
+    const onPrevPage = () => {
         page > 1 && setPage(page - 1);
         window.scrollTo(0, 0);
     };
-    const nextPage = () => {
+    const onNextPage = () => {
         page < pageCount && setPage(page + 1);
         window.scrollTo(0, 0);
     };
     return (
         <PaginationLabel
-            onPrev={prevPage}
-            onNext={nextPage}
+            onPrev={onPrevPage}
+            onNext={onNextPage}
             currentPage={page}
             pageCount={pageCount}
         />

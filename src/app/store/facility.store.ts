@@ -14,7 +14,7 @@ class FacilityStore {
     @observable total: number | undefined = undefined;
     @observable facilityMap: FacilityMapDto | undefined = undefined;
     @observable facility: FacilityInfoDto | undefined = undefined;
-    @observable data: FacilityInfoDto[] | undefined = [];
+    @observable data: FacilityInfoDto[] | undefined = undefined;
     constructor() {
         makeAutoObservable(this);
     }

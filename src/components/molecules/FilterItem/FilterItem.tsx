@@ -16,8 +16,8 @@ interface Props {
     isSlider?: boolean;
     value: string[] | RangeFilter;
     selectValue?: string[] | RangeFilter;
-    onChange: (value: RangeFilter | string) => void;
     label?: string;
+    onChange: (value: RangeFilter | string) => void;
 }
 
 const FilterItem = ({

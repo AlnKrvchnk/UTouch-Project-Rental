@@ -3,11 +3,11 @@ import formatedPhone from '@utilites/formatedPhoneNumber';
 import { useEffect, useState } from 'react';
 
 interface Props {
-    valueEntered: (value: string) => void;
+    onValueEntered: (value: string) => void;
     setError: (errorMessage: string) => void;
 }
 
-const EnterPhoneContainer = ({ valueEntered, setError }: Props) => {
+const EnterPhoneContainer = ({ onValueEntered, setError }: Props) => {
     const [value, setValue] = useState<string>('');
     const regexp = /^(8|\+7)(\(\d{3}\))\s(\d{3})-(\d{4})$/g;
 
@@ -15,7 +15,7 @@ const EnterPhoneContainer = ({ valueEntered, setError }: Props) => {
         setError('');
         if (value.match(regexp)) {
             console.log(value.replace(/[^\d]/g, ''));
-            valueEntered(value.replace(/[^\d]/g, ''));
+            onValueEntered(value.replace(/[^\d]/g, ''));
         } else {
             if (value.match(/[^\d-()+\s]/gi)) {
                 setValue(value.replace(/[^\d-()+\s]/gi, ''));

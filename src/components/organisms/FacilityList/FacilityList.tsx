@@ -1,5 +1,6 @@
 import { FacilityInfoDto } from '@/app/types/Facility/FacilityInfoDto';
 import FacilityCardContainer from '@/components/containers/FacilityCardContainer/FacilityCardContainer';
+import PseudoFacilityCard from '../PseudoFacilityCard/PseudoFacilityCard';
 
 interface Props {
     items?: FacilityInfoDto[];
@@ -13,18 +14,24 @@ const FacilityList = ({
     onItemCollection,
     onItemDetail,
 }: Props) => {
-    return (
+    return items ? (
         <>
-            {items &&
-                items.map((item) => (
-                    <FacilityCardContainer
-                        key={`${item.id}`}
-                        item={item}
-                        itemLike={onItemLike}
-                        itemCollection={onItemCollection}
-                        itemDetail={onItemDetail}
-                    />
-                ))}
+            {items.map((item) => (
+                <FacilityCardContainer
+                    key={`${item.id}`}
+                    item={item}
+                    onItemLike={onItemLike}
+                    onItemCollection={onItemCollection}
+                    onItemDetail={onItemDetail}
+                />
+            ))}
+        </>
+    ) : (
+        <>
+            <PseudoFacilityCard />
+            <PseudoFacilityCard />
+            <PseudoFacilityCard />
+            <PseudoFacilityCard />
         </>
     );
 };
