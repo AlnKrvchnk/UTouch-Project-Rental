@@ -1,9 +1,7 @@
 /node_modules
-.storybook
 .gitignore
+build
 
-/build
-/dist
 
 npm-debug.log*
 yarn-debug.log*
