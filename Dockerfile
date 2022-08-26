@@ -1,32 +1,18 @@
-# stage1 as builder
-FROM node:10-alpine as builder
+FROM node:16.15.0-slim AS deps
 
-# copy the package.json to install dependencies
+WORKDIR /opt/app
 COPY package.json package-lock.json ./
+RUN npm install
 
-# Install the dependencies and make the folder
-RUN npm install && mkdir /react-ui && mv ./node_modules ./react-ui
-
-WORKDIR /react-ui
-
+FROM node:16.15.0-slim AS builder
+ENV NODE_ENV=production
+WORKDIR /opt/app
 COPY . .
-
-# Build the project and copy the files
+COPY --from=deps /opt/app/node_modules ./node_modules
 RUN npm run build
 
-
-FROM nginx:alpine
-
-#!/bin/sh
-
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
-
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy from the stahg 1
-COPY --from=builder /react-ui/build /usr/share/nginx/html
-
-EXPOSE 3000 80
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+FROM nginx:alpine AS runner
+COPY .nginx /etc/nginx
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=builder /opt/app/build /usr/share/nginx/html
