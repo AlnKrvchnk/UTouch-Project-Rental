@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.b02506d9.css","mappings":"AAAA,EAEI,QAAS,CADT,SAEJ,CACA,KAEI,kBAAmB,CADnB,gBAEJ","sources":["styles/reset.css"],"sourcesContent":["* {\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\nbody {\r\n    min-height: 100vh;\r\n    background: #e5e5e5;\r\n}\r\n"],"names":[],"sourceRoot":""}
