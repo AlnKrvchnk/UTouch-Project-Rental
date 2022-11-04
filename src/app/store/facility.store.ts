@@ -5,6 +5,7 @@ import { GetAllFacilityDto } from '@/app/types/Facility/GetAllFacilityDto';
 import { GetAllMapFacilityDto } from '@/app/types/Facility/GetAllMapFacilityDto';
 import { GetAllPagFacilityDto } from '@/app/types/Facility/GetAllPagFacilityDto';
 import { UpdateFacilityDto } from '@/app/types/Facility/UpdateFacilityDto';
+//@ts-ignore
 import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 

@@ -1,5 +1,6 @@
 import { api } from '@/app/api';
 import { FavouriteInfoDto } from '@/app/types/Favourite/FavouriteInfoDto';
+//@ts-ignore
 import { action, computed, makeAutoObservable, observable } from 'mobx';
 import {} from 'mobx-react';
 

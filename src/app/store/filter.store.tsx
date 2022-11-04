@@ -4,6 +4,7 @@ import { FacilityCategory } from '@/app/types/Filter/FacilityCategory';
 import { RangeFilter } from '@/app/types/Filter/RangeFilter';
 import { FilterTitle, ReadFilterDto } from '@/app/types/Filter/ReadFilterDto';
 import { SortBy } from '@/app/types/Filter/SortBy';
+//@ts-ignore
 import { action, computed, makeAutoObservable, observable, toJS } from 'mobx';
 import {} from 'mobx-react';
 
